@@ -351,9 +351,15 @@ FUNCTION {format.number.series}
 FUNCTION {format.edition}
 { edition empty$
     { "" }
-    { output.state mid.sentence =
-	{ edition "l" change.case$ " udgave" * }
-	{ edition "t" change.case$ " udgave" * }
+    { edition "l" change.case$
+      duplicate$ "u" change.case$
+      =
+        { edition add.period$ }
+        { edition }
+      if$
+      output.state mid.sentence =
+	{ "l" change.case$ " udgave" * }
+	{ "t" change.case$ " udgave" * }
       if$
     }
   if$
