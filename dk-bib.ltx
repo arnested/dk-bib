@@ -1,4 +1,4 @@
-% Copyright 2004 by Arne Jorgensen
+% Copyright 2004, 2005 by Arne Jorgensen
 
 % This file is free software; you can redistribute it and/or modify
 % it under the terms of the GNU General Public License as published by
@@ -19,7 +19,9 @@
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage[english,danish]{babel}
-\usepackage{lmodern,mathpazo}
+\usepackage{lmodern}
+\usepackage[osf,sc]{mathpazo}
+\usepackage[nottoc]{tocbibind}
 \usepackage[protrusion=true,expansion=false]{microtype}
 \usepackage{hyperref}
 
@@ -98,7 +100,7 @@ Dette bevirker at der bl.a. skrives \emph{og} mellem forfatternavne i
 stedet for det engelske \emph{and} og at der skrives fx
 \emph{2.~udgave} i stedet for \emph{second edition}.
 
-\section{\textsc{isbn}-, \textsc{issn}- og \textsc{url}-felter}
+\section{ISBN-, ISSN- og URL-felter}
 Hvis \BibTeX-databasen indeholder \textsc{isbn}-, \textsc{issn}- eller
 \textsc{url}-felter og du ønsker at have disse med i din
 litteraturliste kan du gøre bruge at \LaTeX-pakken \texttt{dk-bib}.
@@ -198,6 +200,7 @@ Sidstnævnte er i øvrigt ikke noget forsvar af eller undskyldning for
 at anvende en anden stavemåde end den af Dansk Sprognævn anbefalede,
 nemlig \emph{ph.d.} (og husk at det ved lov er bestemt at offentlige
 myndigheder skal følge sprognævnets anvisninger).
+
 \section{Fejl, forbedringer og tak}
 Finder du fejl i oversættelserne, \BibTeX-stilarterne, \LaTeX-pakken
 eller har du blot forslag til forbedring er du hjertelig velkommen til
@@ -206,9 +209,9 @@ på \url{https://seamus.arnested.dk/projects/dk-bib}.
 
 De danske \BibTeX-stilarter er oprindeligt oversat fra den norske
 oversættelse af de oprindelige stilarter. En stor tak til Dag Langmyhr
-for disse. En tak skal også lyde til Thomas Esser, Thomas Widmann og
-min kære broder, Palle Jørgensen, for at diskutere diverse aspekter af
-pakken med mig.
+for disse. En tak skal også lyde til Thomas Esser, Morten Høgholm,
+Thomas Widmann og min kære broder, Palle Jørgensen, for at diskutere
+diverse aspekter af pakken med mig.
 
 \bibliography{litteratur}
 

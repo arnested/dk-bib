@@ -36,5 +36,5 @@ install-texmflocal:
 	INSTALLDIR=`kpsexpand '$$TEXMFLOCAL'` make install
 
 clean:
-	${RM} dk-bib.aux dk-bib.log dk-bib.blg dk-bib.bbl dk-bib.out
+	${RM} dk-bib.aux dk-bib.log dk-bib.blg dk-bib.bbl dk-bib.out dk-bib.dvi dk-bib.pdf
 	${RM} *~

@@ -1,4 +1,4 @@
-% Copyright 2004 by Arne Jorgensen
+% Copyright 2004, 2005 by Arne Jorgensen
 
 % This file is free software; you can redistribute it and/or modify
 % it under the terms of the GNU General Public License as published by
@@ -61,6 +61,18 @@
 
 \ProcessOptionsX
 
+% Work around a wrong implementation  of \MakeUppercase (according to
+% Morten H\o gholm who also provided this implementation)
+\DeclareRobustCommand\dkbib@MakeUppercase[1]{%
+  \begingroup
+  \def\i{I}\def\j{J}%
+  \def\dkbib@reserved@a##1##2{\let##1##2\dkbib@reserved@a}%
+  \expandafter\dkbib@reserved@a\@uclclist\dkbib@reserved@b{\dkbib@reserved@b\@gobble}%
+  \protected@edef\dkbib@reserved@a{\endgroup\uppercase{#1}}%
+  \reserved@a
+}
+\protected@edef\dkbib@MakeUppercase#1{\dkbib@MakeUppercase{#1}}
+
 \RequirePackage{ifthen}
 \def\@dkbibordinalstoword#1{%
   \ifthenelse{\equal{#1}{1.}\and\dkbib@ordinaldepth>\z@}{\def\dkbib@this{f\o rste}}{%
@@ -111,7 +123,7 @@
     \ifdkbib@ordinalstoword%
       \def\dkbibPrinting#1{%
         \@dkbibordinalstoword{#1}%
-        \expandafter\MakeUppercase\dkbib@this~oplag}
+        \expandafter\dkbib@MakeUppercase\dkbib@this~oplag}
       \def\dkbibprinting#1{%
         \@dkbibordinalstoword{#1}%
         \dkbib@this~oplag}
@@ -127,7 +139,7 @@
   \ifdkbib@ordinalstoword%
     \def\dkbibEdition#1{%
       \@dkbibordinalstoword{#1}%
-      \expandafter\MakeUppercase\dkbib@this}
+      \expandafter\dkbib@MakeUppercase\dkbib@this}
     \def\dkbibedition#1{%
       \@dkbibordinalstoword{#1}%
       \dkbib@this}
