@@ -1128,7 +1128,7 @@ FUNCTION {begin.bib}
   "\@tfor\dkbib@reserved@a:=0123456789\do{%" write$ newline$
   "  \expandafter\sfcode\expandafter`\dkbib@reserved@a=1007" write$ newline$
   "}" write$ newline$
-  "\expandafter\ifx\csname dkbib@addperiod\endcsname\relax\def\dkbib@addperiod{\ifnum\spacefactor=1007.\fi}" write$ newline$
+  "\expandafter\ifx\csname dkbib@addperiod\endcsname\relax\def\dkbib@addperiod{\ifnum\spacefactor=1007.\fi}\fi" write$ newline$
   "\expandafter\ifx\csname dkbibedition\endcsname\relax\def\dkbibedition#1#2{#1\dkbib@addperiod~udgave}\fi" write$ newline$
   "\expandafter\ifx\csname dkbibEdition\endcsname\relax\def\dkbibEdition#1#2{#1\dkbib@addperiod~udgave}\fi" write$ newline$
   "\makeatother" write$ newline$
