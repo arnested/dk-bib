@@ -15,7 +15,7 @@
 % Foundation, Inc., 59 Temple Place - Suite 330, Boston,
 % MA 02111-1307, USA.
 
-\documentclass[a4paper]{article}
+\documentclass[a4paper,pointednumbers]{scrartcl}
 \usepackage{ucs}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -34,6 +34,9 @@
 
 \newcommand{\BibTeX}{\textsc{Bib}\TeX}
 \bibliographystyle{dk-plain}
+
+\setkomafont{title}{\rmfamily}
+\setkomafont{sectioning}{\rmfamily\bfseries}
 
 \title{dk-bib -- danish variants of the standard \BibTeX\ styles}
 \author{Arne Jørgensen\thanks{\texttt{arne.jorgensen@tug.dk}}}
@@ -86,17 +89,18 @@ I preamblen af dit \LaTeX-dokument tilføjer du
   \usepackage[isbn,issn,url]{dk-bib}
 \end{verbatim}
 
-Hvis du er utilfreds med måden disse felter bliver sat på kan du
-definere din egen måde. Det gør du ved i preamblen at definere
-kommandoen(erne) \verb|\dkbibisbn|, \verb|\dkbibissn| og/eller
-\verb|\dkbiburl|. De skal alle tage ét argument, hhv.
-\textsc{isbn}-nummeret, \textsc{issn}-nummeret og \textsc{url}'en.
+Hvis du er utilfreds med måden disse felter bliver sat på er det
+muligt at definere din egen måde. Det gør du ved i preamblen at
+definere en eller flere af kommandoerne \verb|\dkbibisbn|,
+\verb|\dkbibissn| og \verb|\dkbiburl|. De skal alle tage ét argument,
+hhv. \textsc{isbn}"-nummeret, \textsc{issn}"-nummeret og
+\textsc{url}'en.
 
 Følgende eksempel sætter ordet \textsc{isbn} med kapitæler og gør
 \textsc{isbn}-nummeret til et link (ved hjælp af Hyperref-pakken)
 \begin{verbatim}
-\newcommand{\dkbibisbn}[1]{%
-  \textsc{isbn} \href{http://isbn.nu/#1}{#1}}
+  \newcommand{\dkbibisbn}[1]{%
+    \textsc{isbn} \href{http://isbn.nu/#1}{#1}}
 \end{verbatim}
 
 \section{Ordenstal i "`edition"'-feltet}
