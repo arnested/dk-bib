@@ -1,58 +1,130 @@
-% Copyright 2004 by Arne Jorgensen
-
-% This file is free software; you can redistribute it and/or modify
-% it under the terms of the GNU General Public License as published by
-% the Free Software Foundation; either version 2 of the License, or
-% (at your option) any later version.
-
-% This program is distributed in the hope that it will be useful, but
-% WITHOUT ANY WARRANTY; without even the implied warranty of
-% MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-% General Public License for more details.
-
-% You should have received a copy of the GNU General Public License
-% along with this program; if not, write to the Free Software
-% Foundation, Inc., 59 Temple Place - Suite 330, Boston,
-% MA 02111-1307, USA.
+ %% dk-bib.sty
+ %% Copyright 2003 Arne Jorgensen
+ %
+ % This work may be distributed and/or modified under the
+ % conditions of the LaTeX Project Public License, either version 1.3
+ % of this license or (at your option) any later version.
+ % The latest version of this license is in
+ %   http://www.latex-project.org/lppl.txt
+ % and version 1.3 or later is part of all distributions of LaTeX
+ % version 2003/12/01 or later.
+ %
+ % This work has the LPPL maintenance status "maintained".
+ % 
+ % This Current Maintainer of this work is Arne Jorgensen.
+ %
+ % This work consists of the file dk-bib.sty
 
 \NeedsTeXFormat{LaTeX2e}[1995/12/01]
 \ProvidesPackage{dk-bib}[2004/09/21 v0.02 Danish variants of the standard BibTeX styles]
 
-\newif\ifdkbiburl
-\dkbiburlfalse
-\DeclareOption{url}{\dkbiburltrue}
-\DeclareOption{nourl}{\dkbiburlfalse}
+\RequirePackage{keyval}
 
-\newif\ifdkbibisbn
-\dkbibisbntrue
-\DeclareOption{isbn}{\dkbibisbntrue}
-\DeclareOption{noisbn}{\dkbibisbnfalse}
+\newif\ifdkbib@url
+\dkbib@urlfalse
+\define@key{DKBIB}{url}[false]{%
+  \csname dkbib@url#1\endcsname}
 
-\newif\ifdkbibissn
-\dkbibissntrue
-\DeclareOption{issn}{\dkbibissntrue}
-\DeclareOption{noissn}{\dkbibissnfalse}
+\newif\ifdkbib@isbn
+\dkbib@isbntrue
+\define@key{DKBIB}{isbn}[true]{%
+  \csname dkbib@isbn#1\endcsname}
 
-\ProcessOptions
+\newif\ifdkbib@issn
+\dkbib@issntrue
+\define@key{DKBIB}{issn}[true]{%
+  \csname dkbib@issn#1\endcsname}
+
+\newif\ifdkbib@ordinalstoword
+\dkbib@ordinalstowordfalse
+\define@key{DKBIB}{ordinals2word}[true]{%
+  \csname dkbib@ordinalstoword#1\endcsname}
+
+\newcount\dkbib@ordinaldepth
+\dkbib@ordinaldepth20
+\define@key{DKBIB}{ordinaldepth}[20]{%
+  \dkbib@ordinaldepth#1}
+
+\def\ProcessOptionsWithKV#1{%
+  \let\@tempc\relax
+  \let\DKBIB@tempa\@empty
+  \@for\CurrentOption:=\@classoptionslist\do{%
+    \@ifundefined{KV@#1@\CurrentOption}%
+    {}%
+    {%
+      \edef\DKBIB@tempa{\DKBIB@tempa,\CurrentOption,}%
+      \@expandtwoargs\@removeelement\CurrentOption
+        \@unusedoptionlist\@unusedoptionlist
+    }%
+  }%
+  \edef\DKBIB@tempa{%
+    \noexpand\setkeys{#1}{%
+      \DKBIB@tempa\@ptionlist{\@currname.\@currext}%
+    }%
+  }%
+  \DKBIB@tempa
+}
+
+\ProcessOptionsWithKV{DKBIB}
+
+\AtEndOfPackage{%
+  \let\@unprocessedoptions\relax}
+
+\RequirePackage{ifthen}
+\def\@dkbibedition#1{%
+  \ifthenelse{\equal{#1}{1.}\and\dkbib@ordinaldepth>\z@}{\def\dkbib@this{f\o rste}}{%
+    \ifthenelse{\equal{#1}{2.}\and\dkbib@ordinaldepth>\@ne}{\def\dkbib@this{anden}}{%
+      \ifthenelse{\equal{#1}{3.}\and\dkbib@ordinaldepth>\tw@}{\def\dkbib@this{tredje}}{%
+        \ifthenelse{\equal{#1}{4.}\and\dkbib@ordinaldepth>\thr@@}{\def\dkbib@this{fjerde}}{%
+          \ifthenelse{\equal{#1}{5.}\and\dkbib@ordinaldepth>4}{\def\dkbib@this{femte}}{%
+            \ifthenelse{\equal{#1}{6.}\and\dkbib@ordinaldepth>5}{\def\dkbib@this{sjette}}{%
+              \ifthenelse{\equal{#1}{7.}\and\dkbib@ordinaldepth>6}{\def\dkbib@this{syvende}}{%
+                \ifthenelse{\equal{#1}{8.}\and\dkbib@ordinaldepth>7}{\def\dkbib@this{ottende}}{%
+                  \ifthenelse{\equal{#1}{9.}\and\dkbib@ordinaldepth>8}{\def\dkbib@this{niende}}{%
+                    \ifthenelse{\equal{#1}{10.}\and\dkbib@ordinaldepth>9}{\def\dkbib@this{tiende}}{%
+                      \ifthenelse{\equal{#1}{11.}\and\dkbib@ordinaldepth>10}{\def\dkbib@this{elvte}}{%
+                        \ifthenelse{\equal{#1}{12.}\and\dkbib@ordinaldepth>11}{\def\dkbib@this{tolvte}}{%
+                          \ifthenelse{\equal{#1}{13.}\and\dkbib@ordinaldepth>12}{\def\dkbib@this{trettende}}{%
+                            \ifthenelse{\equal{#1}{14.}\and\dkbib@ordinaldepth>13}{\def\dkbib@this{fjortende}}{%
+                              \ifthenelse{\equal{#1}{15.}\and\dkbib@ordinaldepth>14}{\def\dkbib@this{femtende}}{%
+                                \ifthenelse{\equal{#1}{16.}\and\dkbib@ordinaldepth>15}{\def\dkbib@this{sekstende}}{%
+                                  \ifthenelse{\equal{#1}{17.}\and\dkbib@ordinaldepth>\sixt@@n}{\def\dkbib@this{syttende}}{%
+                                    \ifthenelse{\equal{#1}{18.}\and\dkbib@ordinaldepth>17}{\def\dkbib@this{attende}}{%
+                                      \ifthenelse{\equal{#1}{19.}\and\dkbib@ordinaldepth>18}{\def\dkbib@this{nittende}}{%
+                                        \ifthenelse{\equal{#1}{20.}\and\dkbib@ordinaldepth>19}{\def\dkbib@this{tyvende}}{%
+                                          \def\dkbib@this{#1}}}}}}}}}}}}}}}}}}}}}%
+}
 
 \AtBeginDocument{%
   %%% url
-  \ifdkbiburl%
+  \ifdkbib@url%
     \RequirePackage{url}%
     \def\dkbiburl#1{URL \url{#1}}%
   \else%
     \def\dkbiburl#1.{\relax}%
   \fi%
   %%% isbn
-  \ifdkbibisbn%
+  \ifdkbib@isbn%
     \def\dkbibisbn#1{ISBN #1}%
   \else%
     \def\dkbibisbn#1.{\relax}%
   \fi%
   %%% issn
-  \ifdkbibissn%
+  \ifdkbib@issn%
     \def\dkbibissn#1{ISSN #1}%
   \else%
     \def\dkbibissn#1.{\relax}%
+  \fi%
+  %%% ordinalstoword
+  \ifdkbib@ordinalstoword%
+    \def\dkbibEdition#1{%
+      \@dkbibedition{#1}%
+      \expandafter\MakeUppercase\dkbib@this}
+    \def\dkbibedition#1{%
+      \@dkbibedition{#1}%
+      \dkbib@this}
+  \else
+    \def\dkbibEdition#1{#1}%
+    \def\dkbibedition#1{#1}%
   \fi%
 }
