@@ -15,5 +15,7 @@
     which can be enabled through a LaTeX style file.
   </description>
   <documentation href='ctan:/biblio/bibtex/contrib/dk-bib/dk-bib.pdf'/>
+  <documentation href='ctan:/biblio/bibtex/contrib/dk-bib/README'/>
   <ctan path='/biblio/bibtex/contrib/dk-bib'/>
+  <miktex/>
 </entry>
