@@ -15,14 +15,13 @@
 % Foundation, Inc., 59 Temple Place - Suite 330, Boston,
 % MA 02111-1307, USA.
 
-\documentclass[a4paper,pointednumbers]{scrartcl}
+\documentclass[a4paper,pointednumbers,abstracton,bibtotoc]{scrartcl}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage[english,danish]{babel}
 \usepackage{lmodern}
 \usepackage[osf,sc]{mathpazo}
-\usepackage[nottoc]{tocbibind}
-\usepackage[protrusion=true,expansion=false]{microtype}
+\usepackage[protrusion=true,expansion=true]{microtype}
 \usepackage{hyperref}
 
 % subversion date and revision
@@ -69,24 +68,24 @@
 \renewcommand{\abstractname}{Abstract in english}
 \begin{abstract}
   Dk-bib is a translation of the four standard \BibTeX\ style files
-  (abbrv, alpha, plain and unsrt) into danish. The files have been
-  extended with \textsc{url}, \textsc{isbn}, \textsc{issn} and
-  printing fields which can be enabled through a \LaTeX\ style file.
+  (abbrv, alpha, plain and unsrt) and apalike into danish. The files
+  have been extended with \textsc{url}, \textsc{isbn}, \textsc{issn}
+  and printing fields which can be enabled through a \LaTeX\ style
+  file.
 
   This manual is in danish.
 \end{abstract}
 }}
 \section{Introduktion}
 Dk-bib er en oversættelse til dansk af de fire
-\BibTeX-standardstilarter (abbrv, alpha, plain, unsrt).
+\BibTeX-standardstilarter (abbrv, alpha, plain, unsrt), samt
+apalike-stilarten.
 
 Har du brug for en generel introduktion til \BibTeX\ kan kapitel~12
 og~13 i~\cite{companion} anbefales.
 
 \section{Simpel brug}
-
-I sin simpleste form anvendes de ved
-blot at skrive
+I sin simpleste form anvendes de ved blot at skrive
 \begin{verbatim}
   \bibliographystyle{dk-plain}
 \end{verbatim}
@@ -99,6 +98,22 @@ i \LaTeX-dokumentet.
 Dette bevirker at der bl.a. skrives \emph{og} mellem forfatternavne i
 stedet for det engelske \emph{and} og at der skrives fx
 \emph{2.~udgave} i stedet for \emph{second edition}.
+
+\subsection{Apalike-stilarten}
+Ønsker du at bruge oversættelsen af apalike-stilarten skal du forkorte
+en smule og blot skrive
+\begin{verbatim}
+  \bibliographystyle{dk-apali}
+\end{verbatim}
+
+Apalike.bst har brug for en anden udgave af \LaTeX's
+\verb|\cite|-kommando end den der som standard er defineret. Vi er
+derfor nød til at fortælle \LaTeX\ at vi bruger apalike.
+
+Det kan du gøre ved at tilføje følgende i preamblen
+\begin{verbatim}
+  \usepackage[apalike]{dk-bib}
+\end{verbatim}
 
 \section{ISBN-, ISSN- og URL-felter}
 Hvis \BibTeX-databasen indeholder \textsc{isbn}-, \textsc{issn}- eller
