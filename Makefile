@@ -24,6 +24,7 @@ install: dk-bib.pdf
 	install -m 0644 dk-bib.pdf    ${INSTALLDIR}/doc/latex/dk-bib/
 	install -m 0644 dk-abbrv.bst\
 	                dk-alpha.bst\
+	                dk-apali.bst\
 	                dk-plain.bst\
 	                dk-unsrt.bst  ${INSTALLDIR}/bibtex/bst/dk-bib/
 	(test -f ${INSTALLDIR}/ls-R && mktexlsr ${INSTALLDIR}) || true

@@ -59,6 +59,11 @@
 \DeclareOptionX{ordinaldepth}{%
   \dkbib@ordinaldepth#1}
 
+\newif\ifdkbib@apalike
+\dkbib@apalikefalse
+\DeclareOptionX{apalike}[true]{%
+  \csname dkbib@apalike#1\endcsname}
+
 \ProcessOptionsX
 
 % Work around a wrong implementation  of \MakeUppercase (according to
@@ -98,6 +103,10 @@
 \dkbib@DeclareOrdinalWord{20}{tyvende}
 
 \AtBeginDocument{%
+  %%% apalike
+  \ifdkbib@apalike%
+    \RequirePackage{apalike}%
+  \fi%
   %%% url
   \ifdkbib@url%
     \RequirePackage{url}%
