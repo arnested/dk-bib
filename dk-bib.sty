@@ -23,13 +23,36 @@
 \DeclareOption{url}{\dkbiburltrue}
 \DeclareOption{nourl}{\dkbiburlfalse}
 
+\newif\ifdkbibisbn
+\dkbibisbntrue
+\DeclareOption{isbn}{\dkbibisbntrue}
+\DeclareOption{noisbn}{\dkbibisbnfalse}
+
+\newif\ifdkbibissn
+\dkbibissntrue
+\DeclareOption{issn}{\dkbibissntrue}
+\DeclareOption{noissn}{\dkbibissnfalse}
+
 \ProcessOptions
 
 \AtBeginDocument{%
+  %%% url
   \ifdkbiburl%
     \RequirePackage{url}%
-    \def\dkbiburl#1{URL: \url{#1}}%
+    \def\dkbiburl#1{URL \url{#1}}%
   \else%
     \def\dkbiburl#1.{\relax}%
+  \fi%
+  %%% isbn
+  \ifdkbibisbn%
+    \def\dkbibisbn#1{ISBN #1}%
+  \else%
+    \def\dkbibisbn#1.{\relax}%
+  \fi%
+  %%% issn
+  \ifdkbibissn%
+    \def\dkbibissn#1{ISSN #1}%
+  \else%
+    \def\dkbibissn#1.{\relax}%
   \fi%
 }

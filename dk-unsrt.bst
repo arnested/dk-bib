@@ -115,15 +115,13 @@ FUNCTION {new.block}
 }
 
 FUNCTION {output.isbn.issn}
-{ new.block
-  isbn empty$
+{ isbn empty$
     'skip$
-    { "ISBN " isbn * output }
+    { new.block "\dkbibisbn{" isbn * "}" * output }
   if$
-  new.block
   issn empty$
     'skip$
-    { "ISSN " issn * output }
+    { new.block "\dkbibissn{" issn * "}" * output }
   if$
 }
 
@@ -1093,6 +1091,8 @@ FUNCTION {begin.bib}
     { preamble$ write$ newline$ }
   if$
   "\begin{thebibliography}{"  longest.label  * "}" * write$ newline$
+  "\expandafter\ifx\csname dkbibisbn\endcsname\relax\def\dkbibisbn#1{ISBN #1}\fi" write$ newline$
+  "\expandafter\ifx\csname dkbibissn\endcsname\relax\def\dkbibissn#1{ISSN #1}\fi" write$ newline$
   "\expandafter\ifx\csname dkbiburl\endcsname\relax\def\dkbiburl#1.{\relax}\fi" write$ newline$
 }
 
