@@ -12,7 +12,8 @@
 % Now called `noralpha'.
 % Added field "isbn" and "issn". dag@ifi.uio.no, April 2001.
 % Translated into Danish by arne.jorgensen@tug.dk, June 2001.
-% Now called `dk-alpha'. Updated October 2004.
+% Now called `dk-alpha'.
+% This is dk-bib, Version 0.2 ($Id$)
 
 ENTRY
   { address
@@ -20,6 +21,7 @@ ENTRY
     booktitle
     chapter
     edition
+    printing
     editor
     howpublished
     institution
@@ -356,7 +358,7 @@ FUNCTION {format.number.series}
   if$
 }
 
-FUNCTION {format.edition.translate.i}
+FUNCTION {ordinal.translate.i}
 {     duplicate$ "l" change.case$ "first" =
       	{pop$ "1"}
 	{skip$}
@@ -379,7 +381,7 @@ FUNCTION {format.edition.translate.i}
       if$
 }
 
-FUNCTION {format.edition.translate.ii}
+FUNCTION {ordinal.translate.ii}
 {     duplicate$ "l" change.case$ "sixth" =
       	{pop$ "6"}
 	{skip$}
@@ -402,7 +404,7 @@ FUNCTION {format.edition.translate.ii}
       if$
 }
 
-FUNCTION {format.edition.translate.iii}
+FUNCTION {ordinal.translate.iii}
 {     duplicate$ "l" change.case$ "eleventh" =
       	{pop$ "11"}
 	{skip$}
@@ -425,7 +427,7 @@ FUNCTION {format.edition.translate.iii}
       if$
 }
 
-FUNCTION {format.edition.translate.iv}
+FUNCTION {ordinal.translate.iv}
 {     duplicate$ "l" change.case$ "sixteenth" =
       	{pop$ "16"}
 	{skip$}
@@ -448,11 +450,11 @@ FUNCTION {format.edition.translate.iv}
       if$
 }
 
-FUNCTION {format.edition.translate}
-{ format.edition.translate.i
-  format.edition.translate.ii
-  format.edition.translate.iii
-  format.edition.translate.iv
+FUNCTION {ordinal.translate}
+{ ordinal.translate.i
+  ordinal.translate.ii
+  ordinal.translate.iii
+  ordinal.translate.iv
 }
 
 FUNCTION {format.edition}
@@ -463,7 +465,7 @@ FUNCTION {format.edition}
         { "\dkbibEdition{" }
       if$
       edition
-      format.edition.translate
+      ordinal.translate
       duplicate$ "l" change.case$
       duplicate$ "u" change.case$
       =
@@ -471,6 +473,26 @@ FUNCTION {format.edition}
         { skip$ }
       if$
       * "}~udgave" *
+    }
+  if$
+}
+
+FUNCTION {format.printing}
+{ printing empty$
+    { "" }
+    { output.state mid.sentence =
+        { "\dkbibprinting{" }
+        { "\dkbibPrinting{" }
+      if$
+      printing
+      ordinal.translate
+      duplicate$ "l" change.case$
+      duplicate$ "u" change.case$
+      =
+        { add.period$ }
+        { skip$ }
+      if$
+      * "}" *
     }
   if$
 }
@@ -716,6 +738,7 @@ FUNCTION {book}
     }
   if$
   format.edition output
+  format.printing output
   format.date "year" output.check
   new.block
   note output
@@ -768,6 +791,7 @@ FUNCTION {inbook}
     }
   if$
   format.edition output
+  format.printing output
   format.date "year" output.check
   new.block
   note output
@@ -791,6 +815,7 @@ FUNCTION {incollection}
       publisher "publisher" output.check
       address output
       format.edition output
+      format.printing output
       format.date "year" output.check
     }
     { format.incoll.inproc.crossref output.nonnull
@@ -870,6 +895,7 @@ FUNCTION {manual}
     }
   if$
   format.edition output
+  format.printing output
   format.date output
   new.block
   note output
@@ -1397,6 +1423,8 @@ FUNCTION {begin.bib}
   "\expandafter\ifx\csname dkbibisbn\endcsname\relax\def\dkbibisbn#1.{\relax}\fi" write$ newline$
   "\expandafter\ifx\csname dkbibissn\endcsname\relax\def\dkbibissn#1.{\relax}\fi" write$ newline$
   "\expandafter\ifx\csname dkbiburl\endcsname\relax\def\dkbiburl#1.{\relax}\fi" write$ newline$
+  "\expandafter\ifx\csname dkbibprinting\endcsname\relax\def\dkbibprinting#1,{\relax}\fi" write$ newline$
+  "\expandafter\ifx\csname dkbibPrinting\endcsname\relax\def\dkbibPrinting#1,{\relax}\fi" write$ newline$
 }
 
 EXECUTE {begin.bib}

@@ -16,7 +16,10 @@
 % MA 02111-1307, USA.
 
 \NeedsTeXFormat{LaTeX2e}[1995/12/01]
-\ProvidesPackage{dk-bib}[2004/10/08 v0.2 Danish variants of the standard BibTeX styles]
+
+\def\dkbib@version{0.2} % $Id$
+
+\ProvidesPackage{dk-bib}[2004/11/27 v\dkbib@version\space Danish variants of the standard BibTeX styles]
 
 \RequirePackage{xkeyval}
 
@@ -35,6 +38,11 @@
 \DeclareOptionX{issn}[true]{%
   \csname dkbib@issn#1\endcsname}
 
+\newif\ifdkbib@printing
+\dkbib@printingfalse
+\DeclareOptionX{printing}[true]{%
+  \csname dkbib@printing#1\endcsname}
+
 \newif\ifdkbib@ordinalstoword
 \dkbib@ordinalstowordfalse
 \DeclareOptionX{ordinals2word}[true]{%
@@ -48,7 +56,7 @@
 \ProcessOptionsX
 
 \RequirePackage{ifthen}
-\def\@dkbibedition#1{%
+\def\@dkbibordinalstoword#1{%
   \ifthenelse{\equal{#1}{1.}\and\dkbib@ordinaldepth>\z@}{\def\dkbib@this{f\o rste}}{%
     \ifthenelse{\equal{#1}{2.}\and\dkbib@ordinaldepth>\@ne}{\def\dkbib@this{anden}}{%
       \ifthenelse{\equal{#1}{3.}\and\dkbib@ordinaldepth>\tw@}{\def\dkbib@this{tredje}}{%
@@ -92,13 +100,30 @@
   \else%
     \def\dkbibissn#1.{\relax}%
   \fi%
-  %%% ordinalstoword
+  %%% printing
+  \ifdkbib@printing%
+    \ifdkbib@ordinalstoword%
+      \def\dkbibPrinting#1{%
+        \@dkbibordinalstoword{#1}%
+        \expandafter\MakeUppercase\dkbib@this~oplag}
+      \def\dkbibprinting#1{%
+        \@dkbibordinalstoword{#1}%
+        \dkbib@this~oplag}
+    \else
+      \expandafter\ifx\csname dkbibprinting\endcsname\relax\def\dkbibprinting#1{#1~oplag}\fi%
+      \expandafter\ifx\csname dkbibPrinting\endcsname\relax\def\dkbibPrinting#1{#1~oplag}\fi%
+    \fi
+  \else%
+    \def\dkbibprinting#1,{\relax}%
+    \def\dkbibPrinting#1,{\relax}%
+  \fi%
+  %%% edition
   \ifdkbib@ordinalstoword%
     \def\dkbibEdition#1{%
-      \@dkbibedition{#1}%
+      \@dkbibordinalstoword{#1}%
       \expandafter\MakeUppercase\dkbib@this}
     \def\dkbibedition#1{%
-      \@dkbibedition{#1}%
+      \@dkbibordinalstoword{#1}%
       \dkbib@this}
   \else
     \def\dkbibEdition#1{#1}%
