@@ -1238,7 +1238,7 @@ FUNCTION {begin.bib}
   if$
   "\begin{thebibliography}{"  longest.label  * "}" * write$ newline$
   "\expandafter\ifx\csname dkbibedition\endcsname\relax\def\dkbibedition#1{#1}\fi" write$ newline$
-  "\expandafter\ifx\csname dkbibedition\endcsname\relax\def\dkbibEdition#1{#1}\fi" write$ newline$
+  "\expandafter\ifx\csname dkbibEdition\endcsname\relax\def\dkbibEdition#1{#1}\fi" write$ newline$
   "\expandafter\ifx\csname dkbibisbn\endcsname\relax\def\dkbibisbn#1{ISBN #1}\fi" write$ newline$
   "\expandafter\ifx\csname dkbibissn\endcsname\relax\def\dkbibissn#1{ISSN #1}\fi" write$ newline$
   "\expandafter\ifx\csname dkbiburl\endcsname\relax\def\dkbiburl#1.{\relax}\fi" write$ newline$
