@@ -23,8 +23,17 @@
 \usepackage[protrusion=true,expansion=false]{microtype}
 \usepackage{hyperref}
 
+% subversion date and revision
+\def\dkbib@svn $Id${%
+  \def\dkbibrevision{#2}
+  \year  =#3
+  \month =#4
+  \day   =#5
+}
+\dkbib@svn $Id$
+
 % this is how the LaTeX package can be called
-\usepackage[isbn=true,url=false,ordinals2word=true,ordinaldepth=2]{dk-bib}
+\usepackage[isbn=true,url=false,ordinals2word=true,printing=true,ordinaldepth=2]{dk-bib}
 
 % if you want your own way of typesetting URL's, ISBN's, and ISSN's do
 \newcommand{\dkbiburl}[1]{\textsc{url} \url{#1}}
@@ -37,15 +46,19 @@
 \setkomafont{title}{\rmfamily}
 \setkomafont{sectioning}{\rmfamily\bfseries}
 
-\title{dk-bib -- danish variants of the standard \BibTeX\ styles}
+\title{dk-bib -- danish variants of the standard \BibTeX\
+  styles}
 \author{Arne Jørgensen\thanks{\href{mailto:arne.jorgensen@tug.dk}%
     {\texttt{arne.jorgensen@tug.dk}}}}
+\makeatletter
 \hypersetup{pdfauthor={Arne J\o rgensen},
-  pdftitle={Dk-bib Manual},
+  pdftitle={Dk-bib Manual, version \dkbib@version\ (r\dkbibrevision)},
   pdfsubject={Danish variants of the standard BibTeX styles},
   pdfkeywords={dk-abbrv.sty dk-alpha.sty dk-plain.sty dk-unsrt.sty
     dk-bib.sty BibTeX LaTeX},
+  pdfstartview={FitH},
 }
+\makeatother
 
 \begin{document}
 \maketitle
@@ -55,8 +68,8 @@
 \begin{abstract}
   Dk-bib is a translation of the four standard \BibTeX\ style files
   (abbrv, alpha, plain and unsrt) into danish. The files have been
-  extended with \textsc{url}, \textsc{isbn} and \textsc{issn} fields
-  which can be enabled through a \LaTeX\ style file.
+  extended with \textsc{url}, \textsc{isbn}, \textsc{issn} and
+  printing fields which can be enabled through a \LaTeX\ style file.
 
   This manual is in danish.
 \end{abstract}
@@ -65,8 +78,8 @@
 Dk-bib er en oversættelse til dansk af de fire
 \BibTeX-standardstilarter (abbrv, alpha, plain, unsrt).
 
-Har du brug for en generel introduktion til \BibTeX\ kan kapitel~13
-i~\cite{companion} anbefales.
+Har du brug for en generel introduktion til \BibTeX\ kan kapitel~12
+og~13 i~\cite{companion} anbefales.
 
 \section{Simpel brug}
 
@@ -109,31 +122,54 @@ Følgende eksempel sætter ordet \textsc{isbn} med kapitæler og gør
     \textsc{isbn} \href{http://isbn.nu/#1}{#1}}
 \end{verbatim}
 
-\section{Ordenstal i "`edition"'-feltet}
+\section{"`Printing"'-feltet til oplagsnumre}
+Ønsker du at medtage hvilket oplag af en publikation du referer eller
+henviser til kan du gøre brug af \verb|printing|-feltet. I
+\verb|.bib|-filen tilføjer fx nedenstående ved en publikation
+\begin{verbatim}
+  printing =     {first},
+\end{verbatim}
+
+Af hensyn til bagudkompatibiliteten medtages dette dog ikke i
+litteraturlisten før det aktiveres ved at tilføje \verb|printing| som
+tilvalg til \verb|dk-bib|-pakken
+\begin{verbatim}
+  \usepackage[printing]{dk-bib}
+\end{verbatim}
+
+Bemærk at de danske \BibTeX-stilarter er de eneste der benytter
+\verb|printing|-feltet og at der tilsyneladende ikke er andre
+\BibTeX-stilarter der medtager oplagsinformation. Deler du dine
+\verb|.bib|-filer med andre \LaTeX-brugere kan du derfor ikke
+umiddelbart forvente at de vil kunne gøre brug af oplagsnummeret i
+dine \verb|.bib|-filer eller at du har glæde af oplagsnumre i deres.
+
+\section{Ordenstal i "`edition"'- og "`printing"'-felterne}
 Hvis du udveksler \BibTeX-databasefiler (\texttt{.bib}-filer) med
 andre \LaTeX-brugere vil du måske bemærke at der er tradition for at
 skrive udgavenummeret med ord og på engelsk, fx
 \begin{verbatim}
-  edition = 	 {second},
+  edition =      {second},
 \end{verbatim}
 De danske \BibTeX-stilarter oversætter disse (op til tyvende udgave)
-til \emph{2.~udgave}.
+til \emph{2.~udgave}. På samme vis oversættes oplagsnummeret.
 
-Ønsker du at der i din danske litteraturliste i stedet for
-\emph{2.~udgave} står {anden udgave} kan du bruge \LaTeX-pakken
+Ønsker du at der i din danske litteraturliste i stedet for fx
+\emph{2.~udgave} står \emph{anden udgave} kan du bruge \LaTeX-pakken
 \texttt{dk-bib} således
 \begin{verbatim}
   \usepackage[ordinals2word]{dk-bib}
 \end{verbatim}
-Bemærk at udgaven bliver omskrevet uanset om der i \BibTeX-databasen
-står \emph{second} som ovenfor eller
+Bemærk at udgave og oplag bliver omskrevet uanset om der i
+\BibTeX-databasen står \emph{second} som ovenfor eller fx
 
 \begin{verbatim}
   edition = 	 {2},
 \end{verbatim}
 
-Som udgangspunkt omskrives i dette tilfælde alle udgavenumre op til
-og med tyve, men du kan selv sætte en \emph{lavere} grænse med
+Som udgangspunkt omskrives i dette tilfælde alle udgave- og
+oplagsnumre op til og med tyve, men du kan selv sætte en \emph{lavere}
+grænse med
 \begin{verbatim}
   \usepackage[ordinals2word,ordinaldepth=10]{dk-bib}
 \end{verbatim}
