@@ -456,7 +456,11 @@ FUNCTION {format.edition.translate}
 FUNCTION {format.edition}
 { edition empty$
     { "" }
-    { edition
+    { output.state mid.sentence =
+        { "\dkbibedition{" }
+	{ "\dkbibEdition{" }
+      if$
+      edition
       format.edition.translate
       duplicate$ "l" change.case$
       duplicate$ "u" change.case$
@@ -464,10 +468,7 @@ FUNCTION {format.edition}
         { add.period$ }
         { skip$ }
       if$
-      output.state mid.sentence =
-        { "l" change.case$ "~udgave" * }
-        { "t" change.case$ "~udgave" * }
-      if$
+      * "}~udgave" *
     }
   if$
 }
@@ -1237,6 +1238,8 @@ FUNCTION {begin.bib}
     { preamble$ write$ newline$ }
   if$
   "\begin{thebibliography}{"  longest.label  * "}" * write$ newline$
+  "\expandafter\ifx\csname dkbibedition\endcsname\relax\def\dkbibedition#1{#1}\fi" write$ newline$
+  "\expandafter\ifx\csname dkbibedition\endcsname\relax\def\dkbibEdition#1{#1}\fi" write$ newline$
   "\expandafter\ifx\csname dkbibisbn\endcsname\relax\def\dkbibisbn#1{ISBN #1}\fi" write$ newline$
   "\expandafter\ifx\csname dkbibissn\endcsname\relax\def\dkbibissn#1{ISSN #1}\fi" write$ newline$
   "\expandafter\ifx\csname dkbiburl\endcsname\relax\def\dkbiburl#1.{\relax}\fi" write$ newline$
