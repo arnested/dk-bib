@@ -458,7 +458,7 @@ FUNCTION {format.edition.translate}
 FUNCTION {format.edition}
 { edition empty$
     { "" }
-    { output.state.mid.sentence =
+    { output.state mid.sentence =
         { "\dkbibedition{" }
         { "\dkbibEdition{" }
       if$

@@ -456,10 +456,11 @@ FUNCTION {format.edition.translate}
 FUNCTION {format.edition}
 { edition empty$
     { "" }
-    { output.state.mid.sentence =
+    { output.state mid.sentence =
         { "\dkbibedition{" }
         { "\dkbibEdition{" }
       if$
+      edition
       format.edition.translate
       duplicate$ "l" change.case$
       duplicate$ "u" change.case$
