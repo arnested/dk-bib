@@ -76,19 +76,19 @@
   %%% url
   \ifdkbib@url%
     \RequirePackage{url}%
-    \def\dkbiburl#1{URL \url{#1}}%
+    \expandafter\ifx\csname dkbiburl\endcsname\relax\def\dkbiburl#1{URL \url{#1}}\fi%
   \else%
     \def\dkbiburl#1.{\relax}%
   \fi%
   %%% isbn
   \ifdkbib@isbn%
-    \def\dkbibisbn#1{ISBN #1}%
+    \expandafter\ifx\csname dkbibisbn\endcsname\relax\def\dkbibisbn#1{ISBN #1}\fi%
   \else%
     \def\dkbibisbn#1.{\relax}%
   \fi%
   %%% issn
   \ifdkbib@issn%
-    \def\dkbibissn#1{ISSN #1}%
+    \expandafter\ifx\csname dkbibissn\endcsname\relax\def\dkbibissn#1{ISSN #1}\fi%
   \else%
     \def\dkbibissn#1.{\relax}%
   \fi%
