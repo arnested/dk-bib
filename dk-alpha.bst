@@ -1393,8 +1393,7 @@ FUNCTION {begin.bib}
     { preamble$ write$ newline$ }
   if$
   "\begin{thebibliography}{"  longest.label  * "}" * write$ newline$
-  "\expandafter\ifx\csname url\endcsname\relax\def\url#1{{\tt #1}}\fi" write$ newline$
-  "\expandafter\ifx\csname dkbiburl\endcsname\relax\def\dkbiburl#1{URL \url{#1}}\fi" write$ newline$
+  "\expandafter\ifx\csname dkbiburl\endcsname\relax\def\dkbiburl#1.{\relax}\fi" write$ newline$
 }
 
 EXECUTE {begin.bib}
