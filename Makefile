@@ -1,27 +1,40 @@
-TEXMFLOCAL=`kpsexpand '$$TEXMFLOCAL'`
+.PHONY: all doc install-texmflocal install texlive clean
 
-all:
+all: dk-bib.pdf
 
-doc:
-	pdflatex dk-bib.ltx
+doc: dk-bib.ltx litteratur.bib dk-plain.bst dk-bib.sty
+	test ${LATEX} # checking wheter LATEX is set
+	${LATEX} dk-bib.ltx
 	bibtex dk-bib
-	pdflatex dk-bib.ltx
-	pdflatex dk-bib.ltx
-	${RM} dk-bib.aux dk-bib.log dk-bib.blg dk-bib.bbl dk-bib.out
+	${LATEX} dk-bib.ltx
+	${LATEX} dk-bib.ltx
 
-install-texmflocal:
-	install --mode 0644 -D dk-bib.sty ${TEXMFLOCAL}/tex/latex/dk-bib/dk-bib.sty
-	install --mode 0644 -D dk-bib.pdf ${TEXMFLOCAL}/doc/latex/dk-bib/dk-bib.pdf
-	install --mode 0644 -D dk-abbrv.bst ${TEXMFLOCAL}/bibtex/bst/dk-bib/dk-abbrv.bst
-	install --mode 0644 -D dk-alpha.bst ${TEXMFLOCAL}/bibtex/bst/dk-bib/dk-alpha.bst
-	install --mode 0644 -D dk-plain.bst ${TEXMFLOCAL}/bibtex/bst/dk-bib/dk-plain.bst
-	install --mode 0644 -D dk-unsrt.bst ${TEXMFLOCAL}/bibtex/bst/dk-bib/dk-unsrt.bst
-	mktexlsr ${TEXMFLOCAL}
+dk-bib.pdf: dk-bib.ltx litteratur.bib dk-plain.bst dk-bib.sty
+	LATEX=pdflatex make doc
+
+dk-bib.dvi: dk-bib.ltx litteratur.bib dk-plain.bst dk-bib.sty
+	LATEX=latex make doc
+
+install: dk-bib.pdf
+	test ${INSTALLDIR} # checking whether INSTALLDIR is set
+	install -m 0755 -d            ${INSTALLDIR}/tex/latex/dk-bib/
+	install -m 0755 -d            ${INSTALLDIR}/doc/latex/dk-bib/
+	install -m 0755 -d            ${INSTALLDIR}/bibtex/bst/dk-bib/
+	install -m 0644 dk-bib.sty    ${INSTALLDIR}/tex/latex/dk-bib/
+	install -m 0644 dk-bib.pdf    ${INSTALLDIR}/doc/latex/dk-bib/
+	install -m 0644 dk-abbrv.bst\
+	                dk-alpha.bst\
+	                dk-plain.bst\
+	                dk-unsrt.bst  ${INSTALLDIR}/bibtex/bst/dk-bib/
+	(test -f ${INSTALLDIR}/ls-R && mktexlsr ${INSTALLDIR}) || true
 
 texlive:
-	install --mode 0644 -D dk-bib.sty texlive/texmf-dist/tex/latex/dk-bib/dk-bib.sty
-	install --mode 0644 -D dk-bib.pdf texlive/texmf-dist/doc/latex/dk-bib/dk-bib.pdf
-	install --mode 0644 -D dk-abbrv.bst texlive/texmf-dist/bibtex/bst/dk-bib/dk-abbrv.bst
-	install --mode 0644 -D dk-alpha.bst texlive/texmf-dist/bibtex/bst/dk-bib/dk-alpha.bst
-	install --mode 0644 -D dk-plain.bst texlive/texmf-dist/bibtex/bst/dk-bib/dk-plain.bst
-	install --mode 0644 -D dk-unsrt.bst texlive/texmf-dist/bibtex/bst/dk-bib/dk-unsrt.bst
+	INSTALLDIR=texlive/texmf-dist make install
+
+install-texmflocal:
+	test `kpsexpand '$$TEXMFLOCAL'` # checking whether TEXMFLOCAL is defined
+	INSTALLDIR=`kpsexpand '$$TEXMFLOCAL'` make install
+
+clean:
+	${RM} dk-bib.aux dk-bib.log dk-bib.blg dk-bib.bbl dk-bib.out
+	${RM} *~
