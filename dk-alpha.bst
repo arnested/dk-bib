@@ -470,7 +470,13 @@ FUNCTION {format.edition}
       duplicate$ "u" change.case$
       =
         { add.period$ }
-        { skip$ }
+        { output.state mid.sentence =
+	    { skip$ }
+	    { "u" change.case$
+	      "t" change.case$
+	     }
+	  if$
+	 }
       if$
       * "}~udgave" *
     }
