@@ -33,7 +33,7 @@
 \dkbib@svn $Id$
 
 % this is how the LaTeX package can be called
-\usepackage[isbn=true,url=false,ordinals2word=true,printing=true,ordinaldepth=2]{dk-bib}
+\usepackage[isbn=true,url=false,printing=true,ordinals2word=true,ordinaldepth=2]{dk-bib}
 
 % if you want your own way of typesetting URL's, ISBN's, and ISSN's do
 \newcommand{\dkbiburl}[1]{\textsc{url} \url{#1}}
@@ -53,7 +53,7 @@
 \makeatletter
 \hypersetup{pdfauthor={Arne J\o rgensen},
   pdftitle={Dk-bib Manual, version \dkbib@version\ (r\dkbibrevision)},
-  pdfsubject={Danish variants of the standard BibTeX styles},
+  pdfsubject={Danish variants of the standard BibTeX styles, version \dkbib@version},
   pdfkeywords={dk-abbrv.sty dk-alpha.sty dk-plain.sty dk-unsrt.sty
     dk-bib.sty BibTeX LaTeX},
   pdfstartview={FitH},
@@ -125,9 +125,9 @@ Følgende eksempel sætter ordet \textsc{isbn} med kapitæler og gør
 \section{"`Printing"'-feltet til oplagsnumre}
 Ønsker du at medtage hvilket oplag af en publikation du referer eller
 henviser til kan du gøre brug af \verb|printing|-feltet. I
-\verb|.bib|-filen tilføjer fx nedenstående ved en publikation
+\verb|.bib|-filen tilføjes fx nedenstående ved en publikation
 \begin{verbatim}
-  printing =     {first},
+  printing =     {1},
 \end{verbatim}
 
 Af hensyn til bagudkompatibiliteten medtages dette dog ikke i
@@ -215,6 +215,6 @@ pakken med mig.
 \end{document}
 
 %%% Local Variables: 
-%%% mode: TeX-PDF
+%%% mode: latex
 %%% TeX-master: t
 %%% End: 
