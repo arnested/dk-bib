@@ -1,28 +1,19 @@
-<?xml version="1.0"?>
-<!DOCTYPE entry SYSTEM "../catalogue.dtd">
-<entry id="dk-bib"
-       datestamp="2003/10/24"
-       modifier="arne.jorgensen@tug.dk">
-  <about>
-    <name>dk-bib</name>
-    <caption>Danish variants of standard BibTeX styles.</caption>
-    <author>
-      <name>Arne Jorgensen</name>
-      <email>arne.jorgensen@tug.dk</email>
-    </author>
-    <license type="unknown"/>
-  </about>
-<description>
-  <abstract>
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE entry SYSTEM 'catalogue.dtd'>
+<entry datestamp='2004-10-08 02:00:00' modifier='arne.jorgensen@tug.dk' id='dk-bib'>
+  <name>dk-bib</name>
+  <caption>Danish variants of standard BibTeX styles.</caption>
+  <authorref id='auth:arne.jorgensen'/>
+  <home href='https://seamus.arnested.dk/projects/dk-bib'/>
+  <license type='dfsg'/>
+  <version number='0.2'/>
+  <description>
     Dk-bib is a translation of the four standard BibTeX style files
-    (abbrv, alpha, plain and unsrt) into Danish. The files have been
-    extended with ISBN and ISSN fields. Actually these files were
-    translated from the <xref refid="norbib">Norwegian</xref>
-    translation (by Dag Langmyhr) into Danish. Dag also made the
-    extension for ISBN and ISSN.
-  </abstract>
-</description>
-<distribution>
-    <ctan>biblio/bibtex/contrib/dk-bib</ctan>
-  </distribution>
+    (abbrv, alpha, plain and unsrt) into danish.
+    
+    The files have been extended with URL, ISBN and ISSN fields which can
+    be enabled through a LaTeX style file.
+  </description>
+  <documentation href='ctan:/biblio/bibtex/contrib/dk-bib/dk-bib.pdf'/>
+  <ctan path='/biblio/bibtex/contrib/dk-bib'/>
 </entry>

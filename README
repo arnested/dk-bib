@@ -1,15 +1,5 @@
 Dk-bib is a translation of the four standard BibTeX style files
-(abbrv, alpha, plain and unsrt) into Danish.
+(abbrv, alpha, plain and unsrt) into danish.
 
-The files have been extended with ISBN and ISSN fields.
-
-Actually these files were translated from the Norwegian translation
-(by Dag Langmyhr) into Danish. Dag also made the extension for ISBN
-and ISSN.
-
-The files are named dk-abbrv, dk-alpha, dk-plain and dk-unsrt.
-
-Please report bugs to Arne J\o rgensen <arne.jorgensen@tug.dk>.
-
-
-				       /arne -- January 7, 2002
+The files have been extended with URL, ISBN and ISSN fields which can
+be enabled through a LaTeX style file.

@@ -12,7 +12,7 @@
 % Now called `norabbrv'.
 % Added field "isbn" and "issn". dag@ifi.uio.no, April 2001.
 % Translated into Danish by arne.jorgensen@tug.dk, June 2001.
-% Now called `dk-abbrv'.
+% Now called `dk-abbrv'. Updated October 2004.
 
 ENTRY
   { address
