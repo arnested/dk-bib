@@ -1,0 +1,157 @@
+\documentclass[a4paper]{article}
+\usepackage{ucs}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english,danish]{babel}
+\usepackage{lmodern,mathpazo}
+\usepackage[activate=normal]{pdfcprot}
+\usepackage{hyperref}
+
+% this is how the LaTeX package can be called
+\usepackage[isbn=true,url=false,ordinals2word=true,ordinaldepth=2]{dk-bib}
+
+% if you want your own way of typesetting URL's, ISBN's, and ISSN's do
+\newcommand{\dkbiburl}[1]{\textsc{url} \url{#1}}
+\newcommand{\dkbibisbn}[1]{%
+  \textsc{isbn} \href{http://isbn.nu/#1}{#1}}
+
+\newcommand{\BibTeX}{\textsc{Bib}\TeX}
+\bibliographystyle{dk-plain}
+
+\title{dk-bib -- danish variants of the standard \BibTeX\ styles}
+\author{Arne Jørgensen\thanks{\texttt{arne.jorgensen@tug.dk}}}
+
+\begin{document}
+\maketitle
+
+{\selectlanguage{english}{%
+\renewcommand{\abstractname}{Abstract in english}
+\begin{abstract}
+  Dk-bib is a translation of the four standard \BibTeX\ style files
+  (abbrv, alpha, plain and unsrt) into danish. The files have been
+  extended with \textsc{url}, \textsc{isbn} and \textsc{issn} fields
+  which can be enabled through a \LaTeX style file.
+
+  This manual is in danish.
+\end{abstract}
+}}
+\section{Introduktion}
+Dk-bib er en oversættelse til dansk af de fire
+\BibTeX-standardstilarter (abbrv, alpha, plain, unsrt).
+
+Har du brug for en generel introduktion til \BibTeX\ kan kapitel~13
+i~\cite{companion} anbefales.
+
+\section{Simpel brug}
+
+I sin simpleste form anvendes de ved
+blot at skrive
+\begin{verbatim}
+  \bibliographystyle{dk-plain}
+\end{verbatim}
+i stedet for
+\begin{verbatim}
+  \bibliographystyle{plain}
+\end{verbatim}
+i \LaTeX-dokumentet.
+
+Dette bevirker at der bl.a. skrives \emph{og} mellem forfatternavne i
+stedet for det engelske \emph{and} og at der skrives fx
+\emph{2.~udgave} i stedet for \emph{second edition}.
+
+\section{\textsc{isbn}-, \textsc{issn}- og \textsc{url}-felter}
+Hvis \BibTeX-databasen indeholder \textsc{isbn}-, \textsc{issn}- eller
+\textsc{url}-felter og du ønsker at have disse med i din
+litteraturliste kan du gøre bruge at \LaTeX-pakken \texttt{dk-bib}.
+
+I preamblen af dit \LaTeX-dokument tilføjer du
+\begin{verbatim}
+  \usepackage[isbn,issn,url]{dk-bib}
+\end{verbatim}
+
+Hvis du er utilfreds med måden disse felter bliver sat på kan du
+definere din egen måde. Det gør du ved i preamblen at definere
+kommandoen(erne) \verb|\dkbibisbn|, \verb|\dkbibissn| og/eller
+\verb|\dkbiburl|. De skal alle tage ét argument, hhv.
+\textsc{isbn}-nummeret, \textsc{issn}-nummeret og \textsc{url}'en.
+
+Følgende eksempel sætter ordet \textsc{isbn} med kapitæler og gør
+\textsc{isbn}-nummeret til et link (ved hjælp af Hyperref-pakken)
+\begin{verbatim}
+\newcommand{\dkbibisbn}[1]{%
+  \textsc{isbn} \href{http://isbn.nu/#1}{#1}}
+\end{verbatim}
+
+\section{Ordenstal i "`edition"'-feltet}
+Hvis du udveksler \BibTeX-databasefiler (\texttt{.bib}-filer) med
+andre \LaTeX-brugere vil du måske bemærke at der er tradition for at
+skrive udgavenummeret med med ord og på engelsk, fx
+\begin{verbatim}
+  edition = 	 {second},
+\end{verbatim}
+De danske \BibTeX-stilarter oversætter disse (op til tyvende udgave)
+til \emph{2.~udgave}.
+
+Ønsker du at der i din danske litteraturliste i stedet for
+\emph{2.~udgave} står {anden udgave} kan du bruge \LaTeX-pakken
+\texttt{dk-bib} således
+\begin{verbatim}
+  \usepackage[ordinals2word]{dk-bib}
+\end{verbatim}
+Bemærk at udgaven bliver omskrevet uanset om der i \BibTeX-databasen
+står \emph{second} som ovenfor eller
+
+\begin{verbatim}
+  edition = 	 {2},
+\end{verbatim}
+
+Som udgangspunkt omskrives i dette tilfælde alle udgavenumre op til
+og med tyve, men du kan selv sætte en \emph{lavere} grænse med
+\begin{verbatim}
+  \usepackage[ordinals2word,ordinaldepth=10]{dk-bib}
+\end{verbatim}
+
+\section{"`Specialeafhandling"' og "`Ph.-d.-afhandling"'}
+Den danske \BibTeX-stilarter oversætter felterne \emph{Master's
+  thesis} og \emph{PhD thesis} til henholdsvis
+\emph{Specialeafhandling} og \emph{Ph.d-afhandling}.
+
+Nogle uddannelsesinstitutioner bruger ikke begrebet
+\emph{specialeafhandling}, men fx \emph{hovedopgave} eller slet og ret
+\emph{speciale}. Andre kan få ret ophidsede diskussioner ud af
+stavemåden af ph.d.
+
+Måden man løser dette på (er helt uafhængig af dk-bib) er at indsætte
+et \texttt{type}-felt i \BibTeX-databasen ved den pågældende
+afhandling, fx
+\begin{verbatim}
+  type = 	 {Hovedopgave},
+\end{verbatim}
+eller
+\begin{verbatim}
+  type = 	 {PhD-afhandling},
+\end{verbatim}
+Sidstnævnte er i øvrigt ikke noget forsvar af eller undskyldning for
+at anvende en anden stavemåde end den af Dansk Sprognævn anbefalede,
+nemlig \emph{ph.d.} (og husk at det ved lov er bestemt at offentlige
+myndigheder skal følge sprognævnets anvisninger).
+\section{Fejl, forbedringer og tak}
+Finder du fejl i oversættelserne, \BibTeX-stilarterne, \LaTeX-pakken
+eller har du blot forslag til forbedring er du hjertelig velkommen til
+at indsende dem \href{mailto:arne.jorgensen@tug.dk}{via e-post} eller
+på \url{https://seamus.arnested.dk/projects/dk-bib}.
+
+De danske \BibTeX-stilarter er oprindeligt oversat fra den norske
+oversættelse af de oprindelige stilarter. En stor tak til Dag Langmyhr
+for disse. En tak skal også lyde til Thomas Widmann og min kære
+broder, Palle Jørgensen, for at diskutere diverse aspekter af pakken
+med mig.
+
+\bibliography{litteratur}
+
+\end{document}
+
+%%% Local Variables: 
+%%% mode: TeX-PDF
+%%% TeX-master: t
+%%% End: 
