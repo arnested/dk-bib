@@ -25,6 +25,7 @@ ENTRY
     institution
     isbn
     issn
+    url
     journal
     key
     month
@@ -123,6 +124,13 @@ FUNCTION {output.isbn.issn}
   issn empty$
     'skip$
     { "ISSN " issn * output }
+  if$
+}
+
+FUNCTION {output.url}
+{ url empty$
+    'skip$
+    { new.block "\dkbiburl{" url * "}" * output }
   if$
 }
 
@@ -575,6 +583,7 @@ FUNCTION {article}
   new.block
   note output
   output.isbn.issn
+  output.url
   fin.entry
 }
 
@@ -608,7 +617,8 @@ FUNCTION {book}
   new.block
   note output
   output.isbn.issn
- fin.entry
+  output.url
+  fin.entry
 }
 
 FUNCTION {booklet}
@@ -623,6 +633,7 @@ FUNCTION {booklet}
   new.block
   note output
   output.isbn.issn
+  output.url
   fin.entry
 }
 
@@ -658,6 +669,7 @@ FUNCTION {inbook}
   new.block
   note output
   output.isbn.issn
+  output.url
   fin.entry
 }
 
@@ -685,6 +697,7 @@ FUNCTION {incollection}
   new.block
   note output
   output.isbn.issn
+  output.url
   fin.entry
 }
 
@@ -720,6 +733,7 @@ FUNCTION {inproceedings}
   new.block
   note output
   output.isbn.issn
+  output.url
   fin.entry
 }
 
@@ -757,6 +771,7 @@ FUNCTION {manual}
   new.block
   note output
   output.isbn.issn
+  output.url
   fin.entry
 }
 
@@ -773,6 +788,7 @@ FUNCTION {mastersthesis}
   new.block
   note output
   output.isbn.issn
+  output.url
   fin.entry
 }
 
@@ -787,6 +803,7 @@ FUNCTION {misc}
   new.block
   note output
   output.isbn.issn
+  output.url
   fin.entry
   empty.misc.check
 }
@@ -804,6 +821,7 @@ FUNCTION {phdthesis}
   new.block
   note output
   output.isbn.issn
+  output.url
   fin.entry
 }
 
@@ -840,6 +858,7 @@ FUNCTION {proceedings}
   new.block
   note output
   output.isbn.issn
+  output.url
   fin.entry
 }
 
@@ -856,6 +875,7 @@ FUNCTION {techreport}
   new.block
   note output
   output.isbn.issn
+  output.url
   fin.entry
 }
 
@@ -868,6 +888,7 @@ FUNCTION {unpublished}
   note "note" output.check
   format.date output
   output.isbn.issn
+  output.url
   fin.entry
 }
 
@@ -971,6 +992,8 @@ FUNCTION {begin.bib}
     { preamble$ write$ newline$ }
   if$
   "\begin{thebibliography}{"  longest.label  * "}" * write$ newline$
+  "\expandafter\ifx\csname url\endcsname\relax\def\url#1{{\tt #1}}\fi" write$ newline$
+  "\expandafter\ifx\csname dkbiburl\endcsname\relax\def\dkbiburl#1{URL \url{#1}}\fi" write$ newline$
 }
 
 EXECUTE {begin.bib}
