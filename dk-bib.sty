@@ -1,74 +1,51 @@
- %% dk-bib.sty
- %% Copyright 2003 Arne Jorgensen
- %
- % This work may be distributed and/or modified under the
- % conditions of the LaTeX Project Public License, either version 1.3
- % of this license or (at your option) any later version.
- % The latest version of this license is in
- %   http://www.latex-project.org/lppl.txt
- % and version 1.3 or later is part of all distributions of LaTeX
- % version 2003/12/01 or later.
- %
- % This work has the LPPL maintenance status "maintained".
- % 
- % This Current Maintainer of this work is Arne Jorgensen.
- %
- % This work consists of the file dk-bib.sty
+% Copyright 2004 by Arne Jorgensen
+
+% This file is free software; you can redistribute it and/or modify
+% it under the terms of the GNU General Public License as published by
+% the Free Software Foundation; either version 2 of the License, or
+% (at your option) any later version.
+
+% This program is distributed in the hope that it will be useful, but
+% WITHOUT ANY WARRANTY; without even the implied warranty of
+% MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+% General Public License for more details.
+
+% You should have received a copy of the GNU General Public License
+% along with this program; if not, write to the Free Software
+% Foundation, Inc., 59 Temple Place - Suite 330, Boston,
+% MA 02111-1307, USA.
 
 \NeedsTeXFormat{LaTeX2e}[1995/12/01]
 \ProvidesPackage{dk-bib}[2004/09/21 v0.02 Danish variants of the standard BibTeX styles]
 
-\RequirePackage{keyval}
+\RequirePackage{xkeyval}
 
 \newif\ifdkbib@url
 \dkbib@urlfalse
-\define@key{DKBIB}{url}[false]{%
+\DeclareOptionX{url}[true]{%
   \csname dkbib@url#1\endcsname}
 
 \newif\ifdkbib@isbn
 \dkbib@isbnfalse
-\define@key{DKBIB}{isbn}[true]{%
+\DeclareOptionX{isbn}[true]{%
   \csname dkbib@isbn#1\endcsname}
 
 \newif\ifdkbib@issn
 \dkbib@issnfalse
-\define@key{DKBIB}{issn}[true]{%
+\DeclareOptionX{issn}[true]{%
   \csname dkbib@issn#1\endcsname}
 
 \newif\ifdkbib@ordinalstoword
 \dkbib@ordinalstowordfalse
-\define@key{DKBIB}{ordinals2word}[true]{%
+\DeclareOptionX{ordinals2word}[true]{%
   \csname dkbib@ordinalstoword#1\endcsname}
 
 \newcount\dkbib@ordinaldepth
 \dkbib@ordinaldepth20
-\define@key{DKBIB}{ordinaldepth}[20]{%
+\DeclareOptionX{ordinaldepth}{%
   \dkbib@ordinaldepth#1}
 
-\def\ProcessOptionsWithKV#1{%
-  \let\@tempc\relax
-  \let\DKBIB@tempa\@empty
-  \@for\CurrentOption:=\@classoptionslist\do{%
-    \@ifundefined{KV@#1@\CurrentOption}%
-    {}%
-    {%
-      \edef\DKBIB@tempa{\DKBIB@tempa,\CurrentOption,}%
-      \@expandtwoargs\@removeelement\CurrentOption
-        \@unusedoptionlist\@unusedoptionlist
-    }%
-  }%
-  \edef\DKBIB@tempa{%
-    \noexpand\setkeys{#1}{%
-      \DKBIB@tempa\@ptionlist{\@currname.\@currext}%
-    }%
-  }%
-  \DKBIB@tempa
-}
-
-\ProcessOptionsWithKV{DKBIB}
-
-\AtEndOfPackage{%
-  \let\@unprocessedoptions\relax}
+\ProcessOptionsX
 
 \RequirePackage{ifthen}
 \def\@dkbibedition#1{%
