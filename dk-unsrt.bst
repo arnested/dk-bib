@@ -358,92 +358,92 @@ FUNCTION {format.number.series}
 
 FUNCTION {format.edition.translate.i}
 {     duplicate$ "l" change.case$ "first" =
-      	{pop$ "\dkbibedition{1}"}
+      	{pop$ "1"}
 	{skip$}
       if$
       duplicate$ "l" change.case$ "second" =
-      	{pop$ "\dkbibedition{2}"}
+      	{pop$ "2"}
 	{skip$}
       if$
       duplicate$ "l" change.case$ "third" =
-      	{pop$ "\dkbibedition{3}"}
+      	{pop$ "3"}
 	{skip$}
       if$
       duplicate$ "l" change.case$ "fourth" =
-      	{pop$ "\dkbibedition{4}"}
+      	{pop$ "4"}
 	{skip$}
       if$
       duplicate$ "l" change.case$ "fifth" =
-      	{pop$ "\dkbibedition{5}"}
+      	{pop$ "5"}
 	{skip$}
       if$
 }
 
 FUNCTION {format.edition.translate.ii}
 {     duplicate$ "l" change.case$ "sixth" =
-      	{pop$ "\dkbibedition{6}"}
+      	{pop$ "6"}
 	{skip$}
       if$
       duplicate$ "l" change.case$ "seventh" =
-      	{pop$ "\dkbibedition{7}"}
+      	{pop$ "7"}
 	{skip$}
       if$
       duplicate$ "l" change.case$ "eighth" =
-      	{pop$ "\dkbibedition{8}"}
+      	{pop$ "8"}
 	{skip$}
       if$
       duplicate$ "l" change.case$ "ninth" =
-      	{pop$ "\dkbibedition{9}"}
+      	{pop$ "9"}
 	{skip$}
       if$
       duplicate$ "l" change.case$ "tenth" =
-      	{pop$ "\dkbibedition{10}"}
+      	{pop$ "10"}
 	{skip$}
       if$
 }
 
 FUNCTION {format.edition.translate.iii}
 {     duplicate$ "l" change.case$ "eleventh" =
-      	{pop$ "\dkbibedition{11}"}
+      	{pop$ "11"}
 	{skip$}
       if$
       duplicate$ "l" change.case$ "twelfth" =
-      	{pop$ "\dkbibedition{12}"}
+      	{pop$ "12"}
 	{skip$}
       if$
       duplicate$ "l" change.case$ "thirteenth" =
-      	{pop$ "\dkbibedition{13}"}
+      	{pop$ "13"}
 	{skip$}
       if$
       duplicate$ "l" change.case$ "fourteenth" =
-      	{pop$ "\dkbibedition{14}"}
+      	{pop$ "14"}
 	{skip$}
       if$
       duplicate$ "l" change.case$ "fifteenth" =
-      	{pop$ "\dkbibedition{15}"}
+      	{pop$ "15"}
 	{skip$}
       if$
 }
 
 FUNCTION {format.edition.translate.iv}
 {     duplicate$ "l" change.case$ "sixteenth" =
-      	{pop$ "\dkbibedition{16}"}
+      	{pop$ "16"}
 	{skip$}
       if$
       duplicate$ "l" change.case$ "seventeenth" =
-      	{pop$ "\dkbibedition{17}"}
+      	{pop$ "17"}
 	{skip$}
       if$
       duplicate$ "l" change.case$ "eighteenth" =
-      	{pop$ "\dkbibedition{18}"}
+      	{pop$ "18"}
 	{skip$}
       if$
       duplicate$ "l" change.case$ "nineteenth" =
-      	{pop$ "\dkbibedition{19}"}
+      	{pop$ "19"}
 	{skip$}
       if$
       duplicate$ "l" change.case$ "twentieth" =
-      	{pop$ "\dkbibedition{20}"}
+      	{pop$ "20"}
 	{skip$}
       if$
 }
@@ -458,16 +458,17 @@ FUNCTION {format.edition.translate}
 FUNCTION {format.edition}
 { edition empty$
     { "" }
-    { edition "l" change.case$
+    { edition
+      format.edition.translate
+      duplicate$ "l" change.case$
       duplicate$ "u" change.case$
       =
-        { edition add.period$ }
-        { edition }
+        { add.period$ }
+        { skip$ }
       if$
-      format.edition.translate
       output.state mid.sentence =
-	{ "l" change.case$ " udgave" * }
-	{ "t" change.case$ " udgave" * }
+	{ "l" change.case$ "~udgave" * }
+	{ "t" change.case$ "~udgave" * }
       if$
     }
   if$
@@ -1094,7 +1095,6 @@ FUNCTION {begin.bib}
   "\begin{thebibliography}{"  longest.label  * "}" * write$ newline$
   "\expandafter\ifx\csname url\endcsname\relax\def\url#1{{\tt #1}}\fi" write$ newline$
   "\expandafter\ifx\csname dkbiburl\endcsname\relax\def\dkbiburl#1{URL \url{#1}}\fi" write$ newline$
-  "\expandafter\ifx\csname dkbibedition\endcsname\relax\def\dkbibedition#1{#1.}\fi" write$ newline$
 }
 
 EXECUTE {begin.bib}
