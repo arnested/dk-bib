@@ -74,7 +74,7 @@
 \protected@edef\dkbib@MakeUppercase#1{\dkbib@MakeUppercase{#1}}
 
 \newcommand*\dkbib@DeclareOrdinalWord[2]{
-  \@namedef{dkbib@word#1.}{#2}%
+  \@namedef{dkbib@word#1}{#2}%
 }
 \dkbib@DeclareOrdinalWord{1}{f\o rste}
 \dkbib@DeclareOrdinalWord{2}{anden}
@@ -96,8 +96,6 @@
 \dkbib@DeclareOrdinalWord{18}{attende}
 \dkbib@DeclareOrdinalWord{19}{nittende}
 \dkbib@DeclareOrdinalWord{20}{tyvende}
-
-\def\dkbib@removeperiod#1.{#1}
 
 \AtBeginDocument{%
   %%% url
@@ -124,22 +122,21 @@
     \ifdkbib@ordinalstoword%
       \def\dkbibPrinting#1{%
         \@ifundefined{dkbib@word#1}%
-          {\dkbib@MakeUppercase #1~oplag}%
+          {\dkbib@MakeUppercase #1\dkbib@addperiod~oplag}%
           {%
-            \@tempcnta=\dkbib@removeperiod #1\relax
-            \ifnum\@tempcnta>\dkbib@ordinaldepth
-              #1~oplag%
+            \ifnum#1>\dkbib@ordinaldepth
+              #1\dkbib@addperiod~oplag%
             \else
               \expandafter\expandafter\expandafter\expandafter\expandafter\expandafter\expandafter\dkbib@MakeUppercase\@nameuse{dkbib@word#1}~oplag%
             \fi
           }%
         }
       \def\dkbibprinting#1{%
+        \unskip ,
         \@ifundefined{dkbib@word#1}%
           {#1~oplag}%
           {%
-            \@tempcnta=\dkbib@removeperiod #1\relax
-            \ifnum\@tempcnta>\dkbib@ordinaldepth
+            \ifnum#1>\dkbib@ordinaldepth
             #1~oplag%
             \else
             \@nameuse{dkbib@word#1}~oplag%
@@ -147,41 +144,41 @@
           }%
         }
     \else
-      \expandafter\ifx\csname dkbibprinting\endcsname\relax\def\dkbibprinting#1{#1~oplag}\fi%
-      \expandafter\ifx\csname dkbibPrinting\endcsname\relax\def\dkbibPrinting#1{#1~oplag}\fi%
+      \expandafter\ifx\csname dkbibprinting\endcsname\relax%
+        \def\dkbibprinting#1{#1\dkbib@addperiod~oplag}\fi%
+      \expandafter\ifx\csname dkbibPrinting\endcsname\relax%
+        \def\dkbibPrinting#1{\dkbib@MakeUppercase#1\dkbib@addperiod~oplag}\fi%
     \fi
   \else%
-    \def\dkbibprinting#1,{\relax}%
-    \def\dkbibPrinting#1,{\relax}%
+    \def\dkbibprinting#1{\unskip}%
+    \def\dkbibPrinting#1#2{\unskip}%
   \fi%
   %%% edition
   \ifdkbib@ordinalstoword%
-    \def\dkbibEdition#1{%
+    \def\dkbibEdition#1#2{%
       \@ifundefined{dkbib@word#1}%
-        {#1}%
+        {\dkbib@MakeUppercase#1\dkbib@addperiod~udgave}%
         {%
-          \@tempcnta=\dkbib@removeperiod #1\relax
-          \ifnum\@tempcnta>\dkbib@ordinaldepth
-            #1%
+          \ifnum#1>\dkbib@ordinaldepth
+            #1\dkbib@addperiod~udgave%
           \else
-            \expandafter\expandafter\expandafter\expandafter\expandafter\expandafter\expandafter\dkbib@MakeUppercase\@nameuse{dkbib@word#1}%
+            \expandafter\expandafter\expandafter\expandafter\expandafter\expandafter\expandafter\dkbib@MakeUppercase\@nameuse{dkbib@word#1}~udgave%
           \fi
         }%
       }
-    \def\dkbibedition#1{%
+    \def\dkbibedition#1#2{%
       \@ifundefined{dkbib@word#1}%
-        {#1}%
+        {#1\dkbib@addperiod~udgave}%
         {%
-          \@tempcnta=\dkbib@removeperiod #1\relax
-          \ifnum\@tempcnta>\dkbib@ordinaldepth
-          #1%
+          \ifnum#1>\dkbib@ordinaldepth
+          #1\dkbib@period~udgave%
           \else
-          \@nameuse{dkbib@word#1}%
+          \@nameuse{dkbib@word#1}~udgave%
           \fi
         }%
       }
   \else
-    \def\dkbibEdition#1{#1}%
-    \def\dkbibedition#1{#1}%
+    \def\dkbibEdition#1{\dkbib@MakeUppercase#1\dkbib@addperiod~udgave}%
+    \def\dkbibedition#1{#1\dkbib@addperiod~udgave}%
   \fi%
 }

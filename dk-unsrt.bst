@@ -467,7 +467,7 @@ FUNCTION {format.edition}
       duplicate$ "l" change.case$
       duplicate$ "u" change.case$
       =
-        { add.period$ }
+        { purify$ }
         { output.state mid.sentence =
 	    { skip$ }
 	    { "u" change.case$
@@ -476,7 +476,7 @@ FUNCTION {format.edition}
 	  if$
 	 }
       if$
-      * "}~udgave" *
+      * "}" *
     }
   if$
 }
@@ -493,7 +493,7 @@ FUNCTION {format.printing}
       duplicate$ "l" change.case$
       duplicate$ "u" change.case$
       =
-        { add.period$ }
+        { purify$ }
         { skip$ }
       if$
       * "}" *
@@ -1124,13 +1124,19 @@ FUNCTION {begin.bib}
     { preamble$ write$ newline$ }
   if$
   "\begin{thebibliography}{"  longest.label  * "}" * write$ newline$
-  "\expandafter\ifx\csname dkbibedition\endcsname\relax\def\dkbibedition#1{#1}\fi" write$ newline$
-  "\expandafter\ifx\csname dkbibEdition\endcsname\relax\def\dkbibEdition#1{#1}\fi" write$ newline$
-  "\expandafter\ifx\csname dkbibisbn\endcsname\relax\def\dkbibisbn#1.{\relax}\fi" write$ newline$
-  "\expandafter\ifx\csname dkbibissn\endcsname\relax\def\dkbibissn#1.{\relax}\fi" write$ newline$
-  "\expandafter\ifx\csname dkbiburl\endcsname\relax\def\dkbiburl#1.{\relax}\fi" write$ newline$
-  "\expandafter\ifx\csname dkbibprinting\endcsname\relax\def\dkbibprinting#1,{\relax}\fi" write$ newline$
-  "\expandafter\ifx\csname dkbibPrinting\endcsname\relax\def\dkbibPrinting#1,{\relax}\fi" write$ newline$
+  "\makeatletter" write$ newline$
+  "\@tfor\dkbib@reserved@a:=0123456789\do{%" write$ newline$
+  "  \expandafter\sfcode\expandafter`\dkbib@reserved@a=1007" write$ newline$
+  "}" write$ newline$
+  "\expandafter\ifx\csname dkbib@addperiod\endcsname\relax\def\dkbib@addperiod{\ifnum\spacefactor=1007.\fi}" write$ newline$
+  "\expandafter\ifx\csname dkbibedition\endcsname\relax\def\dkbibedition#1#2{#1\dkbib@addperiod~udgave}\fi" write$ newline$
+  "\expandafter\ifx\csname dkbibEdition\endcsname\relax\def\dkbibEdition#1#2{#1\dkbib@addperiod~udgave}\fi" write$ newline$
+  "\makeatother" write$ newline$
+  "\expandafter\ifx\csname dkbibisbn\endcsname\relax\def\dkbibisbn#1.{\unskip}\fi" write$ newline$
+  "\expandafter\ifx\csname dkbibissn\endcsname\relax\def\dkbibissn#1.{\unskip}\fi" write$ newline$
+  "\expandafter\ifx\csname dkbiburl\endcsname\relax\def\dkbiburl#1.{\unskip}\fi" write$ newline$
+  "\expandafter\ifx\csname dkbibprinting\endcsname\relax\def\dkbibprinting#1{\unskip}\fi" write$ newline$
+  "\expandafter\ifx\csname dkbibPrinting\endcsname\relax\def\dkbibPrinting#1#2{\unskip}\fi" write$ newline$
 }
 
 EXECUTE {begin.bib}
