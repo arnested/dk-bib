@@ -1,0 +1,206 @@
+%%% utf8-dk.csf --- danish utf-8 sorting order file for bibtex8
+
+%% Copyright (C) 2005 by Arne Jorgensen
+
+%% Author: Arne Jorgensen <arne.jorgensen@tug.dk>
+%% Version: $Id$
+
+%% This program is free software; you can redistribute it and/or modify
+%% it under the terms of the GNU General Public License as published by
+%% the Free Software Foundation; either version 2 of the License, or (at
+%% your option) any later version.
+
+%% This program is distributed in the hope that it will be useful, but
+%% WITHOUT ANY WARRANTY; without even the implied warranty of
+%% MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+%% General Public License for more details.
+
+%% You should have received a copy of the GNU General Public License
+%% along with this program; if not, write to the Free Software
+%% Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307,
+%% USA.
+
+%%% Commentary:
+
+%% This is a VERY EXPERIMENTAL shot at making a sorting order file for
+%% the danish language and the UTF-8 character set.
+
+%% Generally it should not be possible to fit a sorting of the UTF-8
+%% character set into bibtex8's scheme, but we try to use some hacks
+%% to fit it in anyway.
+
+%% As we said VERY EXPERIMENTAL.
+
+%% Please report any experiences to the author.
+
+%%% Code:
+
+%%% Character Set:
+
+%%  Whether this really works for UTF-8 is a big question. Please report
+%%  exprience with it.
+
+\lowupcase{     %     Lowercase           Uppercase
+                %   Code    TeX         Code    TeX
+                %   
+    † Ä         %   ^^e0    \`{a}       ^^c0    \`{A}
+    ° Å         %   ^^e1    \'{a}       ^^c1    \'{A}
+    ¢ Ç         %   ^^e2    \^{a}       ^^c2    \^{A}
+    £ É         %   ^^e3    \~{a}       ^^c3    \~{A}
+    § Ñ         %   ^^e4    \"{a}       ^^c4    \"{A}
+    • Ö         %   ^^e5    \aa         ^^c5    \AA
+    ¶ Ü         %   ^^e6    \ae         ^^c6    \AE
+    ß á         %   ^^e7    \c{c}       ^^c7    \c{C}
+    ® à         %   ^^e8    \`{e}       ^^c8    \`{E}
+    © â         %   ^^e9    \'{e}       ^^c9    \'{E}
+    ™ ä         %   ^^ea    \^{e}       ^^ca    \^{E}
+    ´ ã         %   ^^eb    \"{e}       ^^cb    \"{E}
+    ¨ å         %   ^^ec    \`{\i}      ^^cc    \`{I}
+    ≠ ç         %   ^^ed    \'{\i}      ^^cd    \'{I}
+    Æ é         %   ^^ee    \^{\i}      ^^ce    \^{I}
+    Ø è         %   ^^ef    \"{\i}      ^^cf    \"{I}
+    ∞ ê         %   ^^f0    eth         ^^d0    ETH
+    ± ë         %   ^^f1    \~{n}       ^^d1    \~{N}
+    ≤ í         %   ^^f2    \`{o}       ^^d2    \`{O}
+    ≥ ì         %   ^^f3    \'{o}       ^^d3    \'{O}
+    ¥ î         %   ^^f4    \^{o}       ^^d4    \^{O}
+    µ ï         %   ^^f5    \~{o}       ^^d5    \~{O}
+    ∂ ñ         %   ^^f6    \"{o}       ^^d6    \"{O}
+    ∏ ò         %   ^^f8    \o          ^^d8    \O
+    π ô         %   ^^f9    \`{u}       ^^d9    \`{U}
+    ∫ ö         %   ^^fa    \'{u}       ^^da    \'{U}
+    ª õ         %   ^^fb    \^{u}       ^^db    \^{U}
+    º ú         %   ^^fc    \"{u}       ^^dc    \"{U}
+    Ω ù         %   ^^fd    \'{y}       ^^dd    \'{Y}
+    æ û         %   ^^fe    thorn       ^^de    THORN
+}
+
+%%% Sorting Order:
+
+%% For sorting we rely on the fact that the relevant part of the special
+%% characters in danish in UTF-8 is encoded as the two-byte combination
+%% of a √ and a second byte which is placed above value 127 and thus does
+%% not collide with the normal character ranges.
+
+%% So we assign √ the lowest value in the sorting order and there by
+%% actually ignoring it's presence and let the second byte decide the
+%% order of the character.
+
+\order{
+    √
+    0-9
+    A
+    Å
+    Ä
+    Ç
+    É
+    a
+    °
+    †
+    ¢
+    £
+    B
+    b
+    C
+    á
+    c
+    ß
+    D
+    ê
+    d
+    ∞
+    E
+    â
+    à
+    ã
+    ä
+    e
+    ©
+    ®
+    ´
+    ™
+    F
+    f
+    G
+    g
+    H
+    h
+    I
+    ç
+    å
+    è
+    é
+    i
+    ≠
+    ¨
+    Ø
+    Æ
+    J
+    j
+    K
+    k
+    L
+    l
+    M
+    m
+    N
+    ë
+    n
+    ±
+    O
+    ì
+    í
+    î
+    ï
+    o
+    ≥
+    ≤
+    ¥
+    µ
+    P
+    p
+    Q
+    q
+    R
+    r
+    S
+    s
+    T
+    û
+    t
+    æ
+    U
+    ú
+    u
+    º
+    V
+    v
+    W
+    w
+    X
+    x
+    Y
+    ù
+    y
+    Ω
+    ø
+    Z
+    z
+    Ü
+    Ñ
+    ¶
+    §
+    ò
+    ñ
+    ∏
+    ∂
+    Ö
+    •
+}
+
+%% Local Variables:
+%% coding: raw-text
+%% comment-start: "%% "
+%% End:
+
+%%% utf8-dk.csf ends here
