@@ -82,12 +82,10 @@
 %% of a √ and a second byte which is placed above value 127 and thus does
 %% not collide with the normal character ranges.
 
-%% So we assign √ the lowest value in the sorting order and there by
-%% actually ignoring it's presence and let the second byte decide the
-%% order of the character.
+%% So we leave out √ of the sorting order and there by ignoring it's
+%% presence and let the second byte decide the order of the character.
 
 \order{
-    √
     0-9
     A
     Å
