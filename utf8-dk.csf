@@ -86,114 +86,36 @@
 %% presence and let the second byte decide the order of the character.
 
 \order{
-    0-9            % 0-9
-    A              % A
-    Å           % \'{A}
-    Ä           % \`{A}
-    Ç           % \^{A}
-    É           % \~{A}
-    a              % a
-    °              % \'{a}
-    †              % \`{a}
-    ¢              % \^{a}
-    £              % \~{a}
-    B              % B
-    b              % b
-    C              % C
-    á           % \c{C}
-    c              % c
-    ß              % \c{c}
-    D              % D
-    ê           % ETH
-    d              % d
-    ∞              % eth
-    E              % E
-    â           % \'{E}
-    à           % \`{E}
-    ã           % \"{E}
-    ä           % \^{E}
-    e              % e
-    ©              % \'{e}
-    ®              % \`{e}
-    ´              % \"{e}
-    ™              % \^{e}
-    F              % F 
-    f              % f
-    G              % G
-    g              % g
-    H              % H
-    h              % h
-    I              % I
-    ç           % \'{I}
-    å           % \'{I}
-    è           % \"{I}
-    é           % \^{I}
-    i              % i
-    ≠              % \'{\i}
-    ¨              % \`{\i}
-    Ø              % \"{\i}
-    Æ              % \^{\i}
-    J              % J
-    j              % j
-    K              % K
-    k              % k
-    L              % L
-    l              % l
-    M              % M
-    m              % m
-    N              % N
-    ë           % \~{N}
-    n              % n
-    ±              % \~{n}
-    O              % O
-    ì           % \'{O}
-    í              % \`{O}
-    î           % \^{O}
-    ï           % \~{O}
-    o              % o
-    ≥              % \'{o}
-    ≤              % \`{o}
-    ¥              % \^{o}
-    µ              % \~{o}
-    P              % P
-    p              % p
-    Q              % Q
-    q              % q
-    R              % R
-    r              % r
-    S              % S
-    s              % s
-    T              % T
-    û           % THORN
-    t              % t
-    æ              % thorn
-    U              % U
-    ú           % \"{U}
-    u              % u
-    º              % \"{u}
-    V              % V
-    v              % v
-    W              % W
-    w              % w
-    X              % X
-    x              % x
-    Y              % Y
-    ù           % \'{Y}
-    y              % y
-    Ω              % \'{y}
-    ø              % \"{y}
-    Z              % Z
-    z              % z
-    Ü           % \AE 
-    Ñ           % \"{A}
-    ¶              % \ae 
-    §              % \"{a}
-    ò           % \O 
-    ñ           % \"{O}
-    ∏              % \o 
-    ∂              % \"{o}
-    Ö           % \ring{A}
-    •              % \ring{a}
+    0-9                                  % 0-9
+    A Å Ä Ç É a ° † ¢ £      % A \'{A} \`{A} \^{A} \~{A} a \'{a} \`{a} \^{a} \~{a}
+    B b                                  % B b
+    C á c ß                           % C \c{C} c \c{c}
+    D ê d ∞                           % D ETH d eth
+    E â à ã ä e © ® ´ ™      % E \'{E} \`{E} \"{E} \^{E} e \'{e} \`{e} \"{e} \^{e}
+    F f                                  % F f
+    G g                                  % G g
+    H h                                  % H h
+    I ç å è é i ≠ ¨ Ø Æ      % I \'{I} \'{I} \"{I} \^{I} i \'{\i} \`{\i} \"{\i} \^{\i}
+    J j                                  % J j
+    K k                                  % K k
+    L l                                  % L l
+    M m                                  % M m
+    N ë n ±                           % N \~{N} n \~{n}
+    O ì í î ï o ≥ ≤ ¥ µ         % O \'{O} \`{O} \^{O} \~{O} o \'{o} \`{o} \^{o} \~{o}
+    P p                                  % P p
+    Q q                                  % Q q
+    R r                                  % R r
+    S s                                  % S s
+    T û t æ                           % T THORN t thorn
+    U ú u º                           % U \"{U} u \"{u}
+    V v                                  % V v
+    W w                                  % W w
+    X x                                  % X x
+    Y ù y Ω ø                         % Y \'{Y} y \'{y} \"{y}
+    Z z                                  % Z z
+    Ü Ñ ¶ §                        % \AE \"{A} \ae \"{a}
+    ò ñ ∏ ∂                        % \O \"{O} \o \"{o}
+    Ö •                               % \ring{A} \ring{a}
 }
 
 %% Local Variables:
