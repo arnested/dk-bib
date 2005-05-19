@@ -40,39 +40,37 @@
 %%  Whether this really works for UTF-8 is a big question. Please report
 %%  exprience with it.
 
-\lowupcase{     %     Lowercase           Uppercase
-                %   Code    TeX         Code    TeX
-                %   
-    † Ä         %   ^^e0    \`{a}       ^^c0    \`{A}
-    ° Å         %   ^^e1    \'{a}       ^^c1    \'{A}
-    ¢ Ç         %   ^^e2    \^{a}       ^^c2    \^{A}
-    £ É         %   ^^e3    \~{a}       ^^c3    \~{A}
-    § Ñ         %   ^^e4    \"{a}       ^^c4    \"{A}
-    • Ö         %   ^^e5    \ring{a}	   ^^c5    \ring{A}
-    ¶ Ü         %   ^^e6    \ae         ^^c6    \AE
-    ß á         %   ^^e7    \c{c}       ^^c7    \c{C}
-    ® à         %   ^^e8    \`{e}       ^^c8    \`{E}
-    © â         %   ^^e9    \'{e}       ^^c9    \'{E}
-    ™ ä         %   ^^ea    \^{e}       ^^ca    \^{E}
-    ´ ã         %   ^^eb    \"{e}       ^^cb    \"{E}
-    ¨ å         %   ^^ec    \`{\i}      ^^cc    \`{I}
-    ≠ ç         %   ^^ed    \'{\i}      ^^cd    \'{I}
-    Æ é         %   ^^ee    \^{\i}      ^^ce    \^{I}
-    Ø è         %   ^^ef    \"{\i}      ^^cf    \"{I}
-    ∞ ê         %   ^^f0    eth         ^^d0    ETH
-    ± ë         %   ^^f1    \~{n}       ^^d1    \~{N}
-    ≤ í         %   ^^f2    \`{o}       ^^d2    \`{O}
-    ≥ ì         %   ^^f3    \'{o}       ^^d3    \'{O}
-    ¥ î         %   ^^f4    \^{o}       ^^d4    \^{O}
-    µ ï         %   ^^f5    \~{o}       ^^d5    \~{O}
-    ∂ ñ         %   ^^f6    \"{o}       ^^d6    \"{O}
-    ∏ ò         %   ^^f8    \o          ^^d8    \O
-    π ô         %   ^^f9    \`{u}       ^^d9    \`{U}
-    ∫ ö         %   ^^fa    \'{u}       ^^da    \'{U}
-    ª õ         %   ^^fb    \^{u}       ^^db    \^{U}
-    º ú         %   ^^fc    \"{u}       ^^dc    \"{U}
-    Ω ù         %   ^^fd    \'{y}       ^^dd    \'{Y}
-    æ û         %   ^^fe    thorn       ^^de    THORN
+\lowupcase{
+    ^^a0 ^^80         % \`{a}    \`{A}
+    ^^a1 ^^81         % \'{a}    \'{A}
+    ^^a2 ^^82         % \^{a}    \^{A}
+    ^^a3 ^^83         % \~{a}    \~{A}
+    ^^a4 ^^84         % \"{a}    \"{A}
+    ^^a5 ^^85         % \ring{a} \ring{A}
+    ^^a6 ^^86         % \ae      \AE
+    ^^a7 ^^87         % \c{c}    \c{C}
+    ^^a8 ^^88         % \`{e}    \`{E}
+    ^^a9 ^^89         % \'{e}    \'{E}
+    ^^aa ^^8a         % \^{e}    \^{E}
+    ^^ab ^^8b         % \"{e}    \"{E}
+    ^^ac ^^8c         % \`{\i}   \`{I}
+    ^^ad ^^8d         % \'{\i}   \'{I}
+    ^^ae ^^8e         % \^{\i}   \^{I}
+    ^^af ^^8f         % \"{\i}   \"{I}
+    ^^b0 ^^90         % eth      ETH
+    ^^b1 ^^91         % \~{n}    \~{N}
+    ^^b2 ^^92         % \`{o}    \`{O}
+    ^^b3 ^^93         % \'{o}    \'{O}
+    ^^b4 ^^94         % \^{o}    \^{O}
+    ^^b5 ^^95         % \~{o}    \~{O}
+    ^^b6 ^^96         % \"{o}    \"{O}
+    ^^b8 ^^98         % \o       \O
+    ^^b9 ^^99         % \`{u}    \`{U}
+    ^^ba ^^9a         % \'{u}    \'{U}
+    ^^bb ^^9b         % \^{u}    \^{U}
+    ^^bc ^^9c         % \"{u}    \"{U}
+    ^^bd ^^9d         % \'{y}    \'{Y}
+    ^^be ^^9e         % thorn    THORN
 }
 
 %%% Sorting Order:
@@ -86,36 +84,36 @@
 %% presence and let the second byte decide the order of the character.
 
 \order{
-    0-9                                  % 0-9
-    A Å Ä Ç É a ° † ¢ £      % A \'{A} \`{A} \^{A} \~{A} a \'{a} \`{a} \^{a} \~{a}
-    B b                                  % B b
-    C á c ß                           % C \c{C} c \c{c}
-    D ê d ∞                           % D ETH d eth
-    E â à ã ä e © ® ´ ™      % E \'{E} \`{E} \"{E} \^{E} e \'{e} \`{e} \"{e} \^{e}
-    F f                                  % F f
-    G g                                  % G g
-    H h                                  % H h
-    I ç å è é i ≠ ¨ Ø Æ      % I \'{I} \'{I} \"{I} \^{I} i \'{\i} \`{\i} \"{\i} \^{\i}
-    J j                                  % J j
-    K k                                  % K k
-    L l                                  % L l
-    M m                                  % M m
-    N ë n ±                           % N \~{N} n \~{n}
-    O ì í î ï o ≥ ≤ ¥ µ         % O \'{O} \`{O} \^{O} \~{O} o \'{o} \`{o} \^{o} \~{o}
-    P p                                  % P p
-    Q q                                  % Q q
-    R r                                  % R r
-    S s                                  % S s
-    T û t æ                           % T THORN t thorn
-    U ú u º                           % U \"{U} u \"{u}
-    V v                                  % V v
-    W w                                  % W w
-    X x                                  % X x
-    Y ù y Ω ø                         % Y \'{Y} y \'{y} \"{y}
-    Z z                                  % Z z
-    Ü Ñ ¶ §                        % \AE \"{A} \ae \"{a}
-    ò ñ ∏ ∂                        % \O \"{O} \o \"{o}
-    Ö •                               % \ring{A} \ring{a}
+    0-9                                              % 0-9
+    A ^^81 ^^80 ^^82 ^^83 a ^^a1 ^^a0 ^^a2 ^^a3      % A \'{A} \`{A} \^{A} \~{A} a \'{a} \`{a} \^{a} \~{a}
+    B b                                              % B b
+    C ^^87 c ^^a7                                    % C \c{C} c \c{c}
+    D ^^90 d ^^b0                                    % D ETH d eth
+    E ^^89 ^^88 ^^8b ^^8a e ^^a9 ^^a8 ^^ab ^^aa      % E \'{E} \`{E} \"{E} \^{E} e \'{e} \`{e} \"{e} \^{e}
+    F f                                              % F f
+    G g                                              % G g
+    H h                                              % H h
+    I ^^8d ^^8c ^^8f ^^8e i ^^ad ^^ac ^^af ^^ae      % I \'{I} \'{I} \"{I} \^{I} i \'{\i} \`{\i} \"{\i} \^{\i}
+    J j                                              % J j
+    K k                                              % K k
+    L l                                              % L l
+    M m                                              % M m
+    N ^^91 n ^^b1                                    % N \~{N} n \~{n}
+    O ^^93 ^^92 ^^94 ^^95 o ^^b3 ^^b2 ^^b4 ^^b5      % O \'{O} \`{O} \^{O} \~{O} o \'{o} \`{o} \^{o} \~{o}
+    P p                                              % P p
+    Q q                                              % Q q
+    R r                                              % R r
+    S s                                              % S s
+    T ^^9e t ^^be                                    % T THORN t thorn
+    U ^^9c u ^^bc                                    % U \"{U} u \"{u}
+    V v                                              % V v
+    W w                                              % W w
+    X x                                              % X x
+    Y ^^9d y ^^bd ^^bf                                % Y \'{Y} y \'{y} \"{y}
+    Z z                                              % Z z
+    ^^86 ^^84 ^^a6 ^^a4                              % \AE \"{A} \ae \"{a}
+    ^^98 ^^96 ^^b8 ^^b6                              % \O \"{O} \o \"{o}
+    ^^85 ^^a5                                        % \ring{A} \ring{a}
 }
 
 %% Local Variables:
