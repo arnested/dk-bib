@@ -20,9 +20,9 @@ install: dk-bib.pdf
 	install -m 0755 -d            ${INSTALLDIR}/tex/latex/dk-bib/
 	install -m 0755 -d            ${INSTALLDIR}/doc/latex/dk-bib/
 	install -m 0755 -d            ${INSTALLDIR}/bibtex/bst/dk-bib/
-	install -m 0755 -d            ${INSTALLDIR}/bibtex/csf/
+	install -m 0755 -d            ${INSTALLDIR}/bibtex/csf/dk-bib/
 	install -m 0644 utf8-dk.csf\
-	                88591-dk.csf  ${INSTALLDIR}/bibtex/csf/
+	                88591-dk.csf  ${INSTALLDIR}/bibtex/csf/dk-bib/
 	install -m 0644 dk-bib.sty    ${INSTALLDIR}/tex/latex/dk-bib/
 	install -m 0644 dk-bib.pdf    ${INSTALLDIR}/doc/latex/dk-bib/
 	install -m 0644 dk-abbrv.bst\
