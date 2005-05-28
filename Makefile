@@ -1,3 +1,7 @@
+# Copyright (C) 2004, 2005 by Arne J¿rgensen
+#
+# Version: $Id$
+
 .PHONY: all doc install-texmflocal install texlive clean
 
 all: dk-bib.pdf
@@ -22,7 +26,7 @@ install: dk-bib.pdf
 	install -m 0755 -d            ${INSTALLDIR}/bibtex/bst/dk-bib/
 	install -m 0755 -d            ${INSTALLDIR}/bibtex/csf/dk-bib/
 	install -m 0644 utf8-dk.csf\
-			mac-roman.csf\
+			mac-dk.csf\
 	                88591-dk.csf  ${INSTALLDIR}/bibtex/csf/dk-bib/
 	install -m 0644 dk-bib.sty    ${INSTALLDIR}/tex/latex/dk-bib/
 	install -m 0644 dk-bib.pdf    ${INSTALLDIR}/doc/latex/dk-bib/
