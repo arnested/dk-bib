@@ -64,6 +64,11 @@
 \DeclareOptionX{apalike}[true]{%
   \csname dkbib@apalike#1\endcsname}
 
+\newif\ifdkbib@citedash
+\dkbib@citedashtrue
+\DeclareOptionX{citedash}[true]{%
+  \csname dkbib@citedash#1\endcsname}
+
 \ProcessOptionsX
 
 % Work around a wrong implementation  of \MakeUppercase (according to
@@ -103,6 +108,12 @@
 \dkbib@DeclareOrdinalWord{20}{tyvende}
 
 \AtBeginDocument{%
+  %%% citedash
+  \@ifpackageloaded{cite}%
+    {\ifdkbib@citedash%
+        \renewcommand{\citedash}{\hbox{-}\penalty\@m}%
+      \fi}%
+    {\relax}%
   %%% apalike
   \ifdkbib@apalike%
     \RequirePackage{apalike}%
