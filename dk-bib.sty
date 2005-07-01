@@ -44,6 +44,11 @@
 \DeclareOptionX{issn}[true]{%
   \csname dkbib@issn#1\endcsname}
 
+\newif\ifdkbib@annote
+\dkbib@annotefalse
+\DeclareOptionX{annote}[true]{%
+  \csname dkbib@annote#1\endcsname}
+
 \newif\ifdkbib@printing
 \dkbib@printingfalse
 \DeclareOptionX{printing}[true]{%
@@ -137,6 +142,12 @@
   \else%
     \def\dkbibissn#1.{\relax}%
   \fi%
+  %%% annote
+  \ifdkbib@annote%
+    \expandafter\ifx\csname dkbibannote\endcsname\relax\def\dkbibannote#1{#1}\fi%
+  \else%
+    \def\dkbibannote#1.{\relax}%
+  \fi%    
   %%% printing
   \ifdkbib@printing%
     \ifdkbib@ordinalstoword%

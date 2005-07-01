@@ -52,6 +52,7 @@ ENTRY
     isbn
     issn
     url
+    annote
     journal
     key
 %    month            not used in apalike
@@ -170,6 +171,13 @@ FUNCTION {output.url}
 { url empty$
     'skip$
     { new.block "\dkbiburl{" url * "}" * output }
+  if$
+}
+
+FUNCTION {output.annote}
+{ annote empty$
+    'skip$
+    { new.block "\dkbibannote{" annote * "}" * output }
   if$
 }
 
@@ -650,6 +658,7 @@ FUNCTION {article}
   note output
   output.isbn.issn
   output.url
+  output.annote
   fin.entry
 }
 
@@ -687,6 +696,7 @@ FUNCTION {book}
   note output
   output.isbn.issn
   output.url
+  output.annote
   fin.entry
 }
 
@@ -704,6 +714,7 @@ FUNCTION {booklet}
   note output
   output.isbn.issn
   output.url
+  output.annote
   fin.entry
 }
 
@@ -743,6 +754,7 @@ FUNCTION {inbook}
   note output
   output.isbn.issn
   output.url
+  output.annote
   fin.entry
 }
 
@@ -773,6 +785,7 @@ FUNCTION {incollection}
   note output
   output.isbn.issn
   output.url
+  output.annote
   fin.entry
 }
 
@@ -802,6 +815,7 @@ FUNCTION {inproceedings}
   note output
   output.isbn.issn
   output.url
+  output.annote
   fin.entry
 }
 
@@ -823,6 +837,7 @@ FUNCTION {manual}
   note output
   output.isbn.issn
   output.url
+  output.annote
   fin.entry
 }
 
@@ -841,6 +856,7 @@ FUNCTION {mastersthesis}
   note output
   output.isbn.issn
   output.url
+  output.annote
   fin.entry
 }
 
@@ -857,6 +873,7 @@ FUNCTION {misc}
   note output
   output.isbn.issn
   output.url
+  output.annote
   fin.entry
 }
 
@@ -875,6 +892,7 @@ FUNCTION {phdthesis}
   note output
   output.isbn.issn
   output.url
+  output.annote
   fin.entry
 }
 
@@ -895,6 +913,7 @@ FUNCTION {proceedings}
   note output
   output.isbn.issn
   output.url
+  output.annote
   fin.entry
 }
 
@@ -913,6 +932,7 @@ FUNCTION {techreport}
   note output
   output.isbn.issn
   output.url
+  output.annote
   fin.entry
 }
 
@@ -927,6 +947,7 @@ FUNCTION {unpublished}
   note "note" output.check
   output.isbn.issn
   output.url
+  output.annote
   fin.entry
 }
 
@@ -1277,6 +1298,7 @@ FUNCTION {begin.bib}
   "\expandafter\ifx\csname dkbiburl\endcsname\relax\def\dkbiburl#1.{\unskip}\fi" write$ newline$
   "\expandafter\ifx\csname dkbibprinting\endcsname\relax\def\dkbibprinting#1{\unskip}\fi" write$ newline$
   "\expandafter\ifx\csname dkbibPrinting\endcsname\relax\def\dkbibPrinting#1#2{\unskip}\fi" write$ newline$
+  "\providecommand{\dkbibannote}[2]{\unskip}" write$ newline$
 }
 
 EXECUTE {begin.bib}
