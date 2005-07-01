@@ -148,68 +148,41 @@
   \else%
     \def\dkbibannote#1.{\relax}%
   \fi%    
-  %%% printing
-  \ifdkbib@printing%
-    \ifdkbib@ordinalstoword%
-      \def\dkbibPrinting#1{%
+  %%% edition/printing
+  \DeclareRobustCommand{\dkbibedition}[2]{%
+    \ifx\@empty#1\@empty\else%
+      \ifdkbib@ordinalstoword%
         \@ifundefined{dkbib@word#1}%
-          {\dkbib@MakeUppercase #1\dkbib@addperiod~oplag}%
-          {%
-            \ifnum#1>\dkbib@ordinaldepth
-              #1\dkbib@addperiod~oplag%
-            \else
-              \expandafter\expandafter\expandafter\expandafter\expandafter\expandafter\expandafter\dkbib@MakeUppercase\@nameuse{dkbib@word#1}~oplag%
-            \fi
-          }%
-        }
-      \def\dkbibprinting#1{%
-        \unskip ,
-        \@ifundefined{dkbib@word#1}%
-          {#1~oplag}%
-          {%
-            \ifnum#1>\dkbib@ordinaldepth
-            #1~oplag%
-            \else
-            \@nameuse{dkbib@word#1}~oplag%
-            \fi
-          }%
-        }
-    \else
-      \expandafter\ifx\csname dkbibprinting\endcsname\relax%
-        \def\dkbibprinting#1{#1\dkbib@addperiod~oplag}\fi%
-      \expandafter\ifx\csname dkbibPrinting\endcsname\relax%
-        \def\dkbibPrinting#1{\dkbib@MakeUppercase#1\dkbib@addperiod~oplag}\fi%
+          {#1\dkbib@addperiod~udgave}%
+          {\ifnum#1>\dkbib@ordinaldepth
+             #1\dkbib@addperiod~udgave%
+           \else
+             \@nameuse{dkbib@word#1}~udgave%
+           \fi}%
+      \else
+        #1\dkbib@addperiod~udgave%
+      \fi
+      \ifdkbib@printing
+        \ifx\@empty#2\@empty\else, \fi
+      \fi
     \fi
-  \else%
-    \def\dkbibprinting#1{\unskip}%
-    \def\dkbibPrinting#1#2{\unskip}%
-  \fi%
-  %%% edition
-  \ifdkbib@ordinalstoword%
-    \def\dkbibEdition#1#2{%
-      \@ifundefined{dkbib@word#1}%
-        {\dkbib@MakeUppercase#1\dkbib@addperiod~udgave}%
-        {%
-          \ifnum#1>\dkbib@ordinaldepth
-            #1\dkbib@addperiod~udgave%
-          \else
-            \expandafter\expandafter\expandafter\expandafter\expandafter\expandafter\expandafter\dkbib@MakeUppercase\@nameuse{dkbib@word#1}~udgave%
-          \fi
-        }%
-      }
-    \def\dkbibedition#1#2{%
-      \@ifundefined{dkbib@word#1}%
-        {#1\dkbib@addperiod~udgave}%
-        {%
-          \ifnum#1>\dkbib@ordinaldepth
-          #1\dkbib@period~udgave%
-          \else
-          \@nameuse{dkbib@word#1}~udgave%
-          \fi
-        }%
-      }
-  \else
-    \def\dkbibEdition#1{\dkbib@MakeUppercase#1\dkbib@addperiod~udgave}%
-    \def\dkbibedition#1{#1\dkbib@addperiod~udgave}%
-  \fi%
+    \ifdkbib@printing
+      \ifx\@empty#2\@empty\else
+        \ifdkbib@ordinalstoword%
+          \@ifundefined{dkbib@word#2}%
+            {#2\dkbib@addperiod~oplag}%
+            {\ifnum#2>\dkbib@ordinaldepth
+               #2\dkbib@addperiod~oplag%
+             \else
+               \@nameuse{dkbib@word#2}~oplag%
+             \fi}%
+        \else
+          #2\dkbib@addperiod~oplag%
+        \fi
+      \fi
+    \fi
+  }
+  \DeclareRobustCommand\dkbibEdition[2]{%
+    \protected@edef\reserved@a{\csname dkbibedition \endcsname{#1}{#2}}%
+    \expandafter\dkbib@MakeUppercase\reserved@a}
 }

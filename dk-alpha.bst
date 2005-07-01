@@ -467,44 +467,43 @@ FUNCTION {ordinal.translate}
 
 FUNCTION {format.edition}
 { edition empty$
+  printing empty$
+  +
+  #2
+  =
     { "" }
     { output.state mid.sentence =
         { "\dkbibedition{" }
         { "\dkbibEdition{" }
       if$
-      edition
-      ordinal.translate
-      duplicate$ "l" change.case$
-      duplicate$ "u" change.case$
-      =
-        { purify$ }
-        { output.state mid.sentence =
-	    { skip$ }
-	    { "u" change.case$
-	      "t" change.case$
-	     }
+      edition empty$
+	{ "" }
+	{ edition ordinal.translate
+	  duplicate$ "l" change.case$
+	  duplicate$ "u" change.case$
+	    =
+            { purify$ }
+            { output.state mid.sentence =
+		{ skip$ }
+		{ "u" change.case$
+		  "t" change.case$
+		}
+	      if$
+	    }
 	  if$
-	 }
+	}
       if$
-      * "}" *
-    }
-  if$
-}
-
-FUNCTION {format.printing}
-{ printing empty$
-    { "" }
-    { output.state mid.sentence =
-        { "\dkbibprinting{" }
-        { "\dkbibPrinting{" }
-      if$
-      printing
-      ordinal.translate
-      duplicate$ "l" change.case$
-      duplicate$ "u" change.case$
-      =
-        { purify$ }
-        { skip$ }
+      * "}{" *
+      printing empty$
+	{ "" }
+	{ printing ordinal.translate
+	  duplicate$ "l" change.case$
+	  duplicate$ "u" change.case$
+	    =
+            { purify$ }
+            { skip$ }
+	  if$
+	}
       if$
       * "}" *
     }
@@ -753,7 +752,6 @@ FUNCTION {book}
     }
   if$
   format.edition output
-  format.printing output
   format.date "year" output.check
   new.block
   note output
@@ -808,7 +806,6 @@ FUNCTION {inbook}
     }
   if$
   format.edition output
-  format.printing output
   format.date "year" output.check
   new.block
   note output
@@ -833,7 +830,6 @@ FUNCTION {incollection}
       publisher "publisher" output.check
       address output
       format.edition output
-      format.printing output
       format.date "year" output.check
     }
     { format.incoll.inproc.crossref output.nonnull
@@ -915,7 +911,6 @@ FUNCTION {manual}
     }
   if$
   format.edition output
-  format.printing output
   format.date output
   new.block
   note output
@@ -1447,17 +1442,14 @@ FUNCTION {begin.bib}
   "\begin{thebibliography}{"  longest.label  * "}" * write$ newline$
   "\makeatletter" write$ newline$
   "\@tfor\dkbib@reserved@a:=0123456789\do{%" write$ newline$
-  "  \expandafter\sfcode\expandafter`\dkbib@reserved@a=1007" write$ newline$
-  "}" write$ newline$
-  "\expandafter\ifx\csname dkbib@addperiod\endcsname\relax\def\dkbib@addperiod{\ifnum\spacefactor=1007.\fi}\fi" write$ newline$
-  "\expandafter\ifx\csname dkbibedition\endcsname\relax\def\dkbibedition#1#2{#1\dkbib@addperiod~udgave}\fi" write$ newline$
-  "\expandafter\ifx\csname dkbibEdition\endcsname\relax\def\dkbibEdition#1#2{#1\dkbib@addperiod~udgave}\fi" write$ newline$
+  "  \expandafter\sfcode\expandafter`\dkbib@reserved@a=1007}" write$ newline$
+  "\providecommand{\dkbib@addperiod}{\ifnum\spacefactor=1007.\fi}" write$ newline$
+  "\providecommand{\dkbibedition}[2]{#1\dkbib@addperiod~udgave}" write$ newline$
+  "\providecommand{\dkbibEdition}[2]{#1\dkbib@addperiod~udgave}" write$ newline$
   "\makeatother" write$ newline$
-  "\expandafter\ifx\csname dkbibisbn\endcsname\relax\def\dkbibisbn#1.{\unskip}\fi" write$ newline$
-  "\expandafter\ifx\csname dkbibissn\endcsname\relax\def\dkbibissn#1.{\unskip}\fi" write$ newline$
-  "\expandafter\ifx\csname dkbiburl\endcsname\relax\def\dkbiburl#1.{\unskip}\fi" write$ newline$
-  "\expandafter\ifx\csname dkbibprinting\endcsname\relax\def\dkbibprinting#1{\unskip}\fi" write$ newline$
-  "\expandafter\ifx\csname dkbibPrinting\endcsname\relax\def\dkbibPrinting#1#2{\unskip}\fi" write$ newline$
+  "\providecommand{\dkbibisbn}[2]{\unskip}" write$ newline$
+  "\providecommand{\dkbibissn}[2]{\unskip}" write$ newline$
+  "\providecommand{\dkbiburl}[2]{\unskip}" write$ newline$
   "\providecommand{\dkbibannote}[2]{\unskip}" write$ newline$
 }
 
