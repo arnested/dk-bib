@@ -1290,13 +1290,13 @@ FUNCTION {begin.bib}
   "\@tfor\dkbib@reserved@a:=0123456789\do{%" write$ newline$
   "  \expandafter\sfcode\expandafter`\dkbib@reserved@a=1007}" write$ newline$
   "\providecommand{\dkbib@addperiod}{\ifnum\spacefactor=1007.\fi}" write$ newline$
-  "\providecommand{\dkbibedition}[2]{#1\dkbib@addperiod~udgave}" write$ newline$
-  "\providecommand{\dkbibEdition}[2]{#1\dkbib@addperiod~udgave}" write$ newline$
+  "\providecommand{\dkbibedition}[1]{#1\dkbib@addperiod~udgave\@gobble}" write$ newline$
+  "\providecommand{\dkbibEdition}[1]{#1\dkbib@addperiod~udgave\@gobble}" write$ newline$
+  "\providecommand{\dkbibisbn}[1]{\unskip\@gobble}" write$ newline$
+  "\providecommand{\dkbibissn}[1]{\unskip\@gobble}" write$ newline$
+  "\providecommand{\dkbiburl}[1]{\unskip\@gobble}" write$ newline$
+  "\providecommand{\dkbibannote}[1]{\unskip\@gobble}" write$ newline$
   "\makeatother" write$ newline$
-  "\providecommand{\dkbibisbn}[2]{\unskip}" write$ newline$
-  "\providecommand{\dkbibissn}[2]{\unskip}" write$ newline$
-  "\providecommand{\dkbiburl}[2]{\unskip}" write$ newline$
-  "\providecommand{\dkbibannote}[2]{\unskip}" write$ newline$
 }
 
 EXECUTE {begin.bib}
