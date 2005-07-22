@@ -1,33 +1,33 @@
-%%% utf8-dk.csf --- danish utf-8 sorting order file for bibtex8
+%%% utf8-dk.csf --- Danish UTF-8 sorting order file for bibtex8
 
-%% Copyright (C) 2005 by Arne Jorgensen
+%% Copyright (C) 2005 Arne Jorgensen
 
 %% Author: Arne Jorgensen <arne.jorgensen@tug.dk>
 %% Version: $Id$
 
-%% This program is free software; you can redistribute it and/or modify
-%% it under the terms of the GNU General Public License as published by
-%% the Free Software Foundation; either version 2 of the License, or (at
-%% your option) any later version.
+%% This file is free software; you can redistribute it and/or modify
+%% it under the terms of the GNU General Public License as published
+%% by the Free Software Foundation; either version 2 of the License,
+%% or (at your option) any later version.
 
-%% This program is distributed in the hope that it will be useful, but
+%% This file is distributed in the hope that it will be useful, but
 %% WITHOUT ANY WARRANTY; without even the implied warranty of
 %% MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 %% General Public License for more details.
 
 %% You should have received a copy of the GNU General Public License
-%% along with this program; if not, write to the Free Software
-%% Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307,
-%% USA.
+%% along with this file; if not, write to the Free Software
+%% Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
+%% 02110-1301, USA.
 
 %%% Commentary:
 
 %% This is a VERY EXPERIMENTAL shot at making a sorting order file for
-%% the danish language and the UTF-8 character set.
+%% the Danish language and the UTF-8 character set.
 
 %% Generally it should not be possible to fit a sorting of the UTF-8
 %% character set into bibtex8's scheme, but we try to use some hacks
-%% to fit it in anyway.
+%% and unexplained behaviour to fit it in anyway.
 
 %% As we said VERY EXPERIMENTAL.
 
@@ -37,8 +37,8 @@
 
 %%% Character Set:
 
-%%  Whether this really works for UTF-8 is a big question. Please report
-%%  exprience with it.
+%%  Whether this really works for UTF-8 is a big question. Please
+%%  report expriences with it.
 
 \lowupcase{
     ^^a0 ^^80         % \`{a}    \`{A}
@@ -75,13 +75,15 @@
 
 %%% Sorting Order:
 
-%% For sorting we rely on the fact that the relevant part of the special
-%% characters in danish in UTF-8 is encoded as the two-byte combination
-%% of a Ã and a second byte which is placed above value 127 and thus does
-%% not collide with the normal character ranges.
+%% For sorting we rely on the fact that the relevant part of the
+%% special characters in Danish in UTF-8 is encoded as the two-byte
+%% combination of a ^^c3 and a second byte which is placed above value
+%% ^^7f and thus does not collide with the normal character ranges.
 
-%% So we leave out Ã of the sorting order and there by ignoring it's
-%% presence and let the second byte decide the order of the character.
+%% So we leave out ^^c3 of the sorting order and there by ignoring
+%% it's presence (it shouldn't be ignored, but sorted last, but it
+%% actually IS ignored) and let the second byte decide the order of
+%% the character.
 
 \order{
     0-9                                              % 0-9
@@ -109,7 +111,7 @@
     V v                                              % V v
     W w                                              % W w
     X x                                              % X x
-    Y ^^9d y ^^bd ^^bf                                % Y \'{Y} y \'{y} \"{y}
+    Y ^^9d y ^^bd ^^bf                               % Y \'{Y} y \'{y} \"{y}
     Z z                                              % Z z
     ^^86 ^^84 ^^a6 ^^a4                              % \AE \"{A} \ae \"{a}
     ^^98 ^^96 ^^b8 ^^b6                              % \O \"{O} \o \"{o}
