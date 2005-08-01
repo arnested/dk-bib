@@ -69,10 +69,10 @@
 \DeclareOptionX{apalike}[true]{%
   \csname dkbib@apalike#1\endcsname}
 
-\newif\ifdkbib@citedash
-\dkbib@citedashtrue
-\DeclareOptionX{citedash}[true]{%
-  \csname dkbib@citedash#1\endcsname}
+\newif\ifdkbib@fixcitedash
+\dkbib@fixcitedashtrue
+\DeclareOptionX{fixcitedash}[true]{%
+  \csname dkbib@fixcitedash#1\endcsname}
 
 \ProcessOptionsX
 
@@ -113,10 +113,11 @@
 \dkbib@DeclareOrdinalWord{20}{tyvende}
 
 \AtBeginDocument{%
-  %%% citedash
+  %%% fixcitedash
   \@ifpackageloaded{cite}%
-    {\ifdkbib@citedash%
-        \renewcommand{\citedash}{\hbox{-}\penalty\@m}%
+    {\ifdkbib@fixcitedash%
+        \providecommand{\dkbibdash}{\hbox{-}\penalty\@m}%
+        \renewcommand{\citedash}{\dkbibdash}%
       \fi}%
     {\relax}%
   %%% apalike

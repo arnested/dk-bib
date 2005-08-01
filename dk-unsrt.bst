@@ -256,8 +256,8 @@ FUNCTION {format.editors}
     { "" }
     { editor format.names
       editor num.names$ #1 >
-	{ ", redakt\o{}rer" * }
-	{ ", redakt\o{}r" * }
+	{ ", redakt\o rer" * }
+	{ ", redakt\o r" * }
       if$
     }
   if$
@@ -275,21 +275,19 @@ FUNCTION {n.dashify}
   ""
     { t empty$ not }
     { t #1 #1 substring$ "-" =
-	{ t #1 #2 substring$ "--" = not
-	    { "--" *
-	      t #2 global.max$ substring$ 't :=
-	    }
-	    {   { t #1 #1 substring$ "-" = }
-		{ "-" *
-		  t #2 global.max$ substring$ 't :=
-		}
-	      while$
-	    }
-	  if$
-	}
-	{ t #1 #1 substring$ *
-	  t #2 global.max$ substring$ 't :=
-	}
+        { "\dkbibdash" *
+          t #2 global.max$ substring$ 't :=
+            { t #1 #1 substring$ "-" = }
+            { t #2 global.max$ substring$ 't := }
+          while$
+          t  #1 #1 substring$ " " =
+            { "{}" * }
+            { " " * }
+          if$
+        }
+        { t #1 #1 substring$ *
+          t #2 global.max$ substring$ 't :=
+        }
       if$
     }
   while$
@@ -1150,6 +1148,7 @@ FUNCTION {begin.bib}
   "\providecommand{\dkbibissn}[1]{\unskip\@gobble}" write$ newline$
   "\providecommand{\dkbiburl}[1]{\unskip\@gobble}" write$ newline$
   "\providecommand{\dkbibannote}[1]{\unskip\@gobble}" write$ newline$
+  "\providecommand{\dkbibdash}{\hbox{-}\penalty\@m}" write$ newline$
   "\makeatother" write$ newline$
 }
 
