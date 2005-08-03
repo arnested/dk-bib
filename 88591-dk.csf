@@ -61,11 +61,9 @@
 
 %%% Sorting Order:
 
-%% Notice that þ (thorn) will be sorted as t and not as th as it
-%% should be. You are probably better off be putting {{\th}} into your
-%% .bib file.
-
-%% There is also no way to have aa sorted as å.
+%% Notice that Þ / þ (THORN / thorn) will be sorted as T / t and not
+%% as Th / th as it should be. You are probably better off be putting
+%% {{\TH}} / {{\th}} into your .bib file.
 
 \order{
     0-9                      % 0-9
@@ -89,11 +87,11 @@
     R r                      % R r
     S s                      % S s
     T Þ t þ                  % T THORN t thorn
-    U Ü u ü                  % U \"{U} u \"{u}
+    U Ú Ù Û u ú ù û          % U \'{U} \`{U} \^{U} u \'{u} \`{u} \^{u}
     V v                      % V v
     W w                      % W w
     X x                      % X x
-    Y Ý y ý ÿ                % Y \'{Y} y \'{y} \"{y}
+    Y Ü Ý y ü ý ÿ            % Y \"{U} \'{Y} y \"{u} \'{y} \"{y}
     Z z                      % Z z
     Æ Ä æ ä                  % \AE \"{A} \ae \"{a}
     Ø Ö ø ö                  % \O \"{O} \o \"{o}

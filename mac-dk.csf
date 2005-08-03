@@ -58,8 +58,6 @@
 
 %%% Sorting Order:
 
-%% There is no way to have aa sorted as å.
-
 \order{
     0-9                      % 0-9
     A Á À Â Ã a á à â ã      % A \'{A} \`{A} \^{A} \~{A} a \'{a} \`{a} \^{a} \~{a}
@@ -82,11 +80,11 @@
     R r                      % R r
     S s                      % S s
     T t                      % T t
-    U Ü u ü                  % U \"{U} u \"{u}
+    U Ú Ù Û u ú ù û          % U \'{U} \`{U} \^{U} u \'{u} \`{u} \^{u}
     V v                      % V v
     W w                      % W w
     X x                      % X x
-    Y y ÿ                    % Y y \"{y}
+    Y Ü y ü ÿ                % Y \"{U} y \"{u} \"{y}
     Z z                      % Z z
     Æ Ä æ ä                  % \AE \"{A} \ae \"{a}
     Ø Ö ø ö                  % \O \"{O} \o \"{o}

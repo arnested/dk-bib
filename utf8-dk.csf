@@ -75,10 +75,11 @@
 
 %%% Sorting Order:
 
-%% For sorting we rely on the fact that the relevant part of the
-%% special characters in Danish in UTF-8 is encoded as the two-byte
-%% combination of a ^^c3 and a second byte which is placed above value
-%% ^^7f and thus does not collide with the normal character ranges.
+%% For sorting we rely on the fact that the most used and relevant
+%% parts of the special characters in Danish in UTF-8 is encoded as
+%% the two-byte combination of a ^^c3 and a second byte which is
+%% placed above value ^^7f and thus does not collide with the normal
+%% character ranges.
 
 %% So we leave out ^^c3 of the sorting order and there by ignoring
 %% it's presence (it shouldn't be ignored, but sorted last, but it
@@ -95,7 +96,7 @@
     F f                                              % F f
     G g                                              % G g
     H h                                              % H h
-    I ^^8d ^^8c ^^8f ^^8e i ^^ad ^^ac ^^af ^^ae      % I \'{I} \'{I} \"{I} \^{I} i \'{\i} \`{\i} \"{\i} \^{\i}
+    I ^^8d ^^8c ^^8f ^^8e i ^^ad ^^ac ^^af ^^ae      % I \'{I} \`{I} \"{I} \^{I} i \'{\i} \`{\i} \"{\i} \^{\i}
     J j                                              % J j
     K k                                              % K k
     L l                                              % L l
@@ -107,11 +108,11 @@
     R r                                              % R r
     S s                                              % S s
     T ^^9e t ^^be                                    % T THORN t thorn
-    U ^^9c u ^^bc                                    % U \"{U} u \"{u}
+    U ^^9a ^^99 ^^9b u ^^ba ^^b9 ^bb                 % U \'{U} \`{U} \^{U} u \'{u} \`{u} \^{u}
     V v                                              % V v
     W w                                              % W w
     X x                                              % X x
-    Y ^^9d y ^^bd ^^bf                               % Y \'{Y} y \'{y} \"{y}
+    Y ^^9c ^^9d y ^^bc ^^bd ^^bf                     % Y \"{U} \'{Y} y \"{u} \'{y} \"{y}
     Z z                                              % Z z
     ^^86 ^^84 ^^a6 ^^a4                              % \AE \"{A} \ae \"{a}
     ^^98 ^^96 ^^b8 ^^b6                              % \O \"{O} \o \"{o}
