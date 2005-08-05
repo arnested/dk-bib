@@ -1,6 +1,22 @@
-# Copyright (C) 2004, 2005 by Arne J¿rgensen
-#
+### Makefile --- for building dk-bib
+
+# Copyright (C) 2004, 2005 Arne Jorgensen
+
 # Version: $Id$
+
+# This file is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 2 of the License, or (at
+# your option) any later version.
+
+# This file is distributed in the hope that it will be useful, but
+# WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+# General Public License for more details.
+
+# You should have received a copy of the GNU General Public License
+# along with this file; if not, write to the Free Software Foundation,
+# Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 
 .PHONY: all doc install-texmflocal install texlive clean
 
@@ -19,31 +35,36 @@ dk-bib.pdf: dk-bib.ltx litteratur.bib dk-plain.bst dk-bib.sty
 dk-bib.dvi: dk-bib.ltx litteratur.bib dk-plain.bst dk-bib.sty
 	LATEX=latex make doc
 
+dk-bib.zip: COPYRIGHT Makefile README dk-bib.ltx dk-bib.pdf\
+	    dk-bib.sty litteratur.bib *.bst *.csf
+	zip $@ $^
+
 install: dk-bib.pdf
 	test ${INSTALLDIR} # checking whether INSTALLDIR is set
 	install -m 0755 -d            ${INSTALLDIR}/tex/latex/dk-bib/
 	install -m 0755 -d            ${INSTALLDIR}/doc/latex/dk-bib/
 	install -m 0755 -d            ${INSTALLDIR}/bibtex/bst/dk-bib/
 	install -m 0755 -d            ${INSTALLDIR}/bibtex/csf/dk-bib/
-	install -m 0644 utf8-dk.csf\
-			mac-dk.csf\
-	                88591-dk.csf  ${INSTALLDIR}/bibtex/csf/dk-bib/
 	install -m 0644 dk-bib.sty    ${INSTALLDIR}/tex/latex/dk-bib/
 	install -m 0644 dk-bib.pdf    ${INSTALLDIR}/doc/latex/dk-bib/
-	install -m 0644 dk-abbrv.bst\
-	                dk-alpha.bst\
-	                dk-apali.bst\
-	                dk-plain.bst\
-	                dk-unsrt.bst  ${INSTALLDIR}/bibtex/bst/dk-bib/
+	install -m 0644 *.bst         ${INSTALLDIR}/bibtex/bst/dk-bib/
+	install -m 0644 *.csf         ${INSTALLDIR}/bibtex/csf/dk-bib/
 	(test -f ${INSTALLDIR}/ls-R && mktexlsr ${INSTALLDIR}) || true
 
 texlive:
 	INSTALLDIR=texlive/texmf-dist make install
+
+install-texmfhome:
+	test `kpsexpand '$$TEXMFHOME'` # checking whether TEXMFHOME is defined
+	INSTALLDIR=`kpsexpand '$$TEXMFHOME'` make install
 
 install-texmflocal:
 	test `kpsexpand '$$TEXMFLOCAL'` # checking whether TEXMFLOCAL is defined
 	INSTALLDIR=`kpsexpand '$$TEXMFLOCAL'` make install
 
 clean:
-	${RM} dk-bib.aux dk-bib.log dk-bib.blg dk-bib.bbl dk-bib.out dk-bib.dvi dk-bib.pdf
+	${RM} dk-bib.aux dk-bib.log dk-bib.blg dk-bib.bbl dk-bib.out dk-bib.dvi\
+	      dk-bib.pdf dk-bib.zip
 	${RM} *~
+
+### Makefile ends here

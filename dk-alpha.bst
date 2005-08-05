@@ -106,10 +106,19 @@ FUNCTION {output.bibitem}
   before.all 'output.state :=
 }
 
+FUNCTION {output.annote}
+{ annote empty$
+    'skip$
+    { "\dkbibannote{" cite$ * "}{" * annote add.period$ * "}" * 
+      write$ newline$ }
+  if$
+}
+
 FUNCTION {fin.entry}
 { add.period$
   write$
   newline$
+  output.annote
 }
 
 FUNCTION {new.block}
@@ -134,13 +143,6 @@ FUNCTION {output.url}
 { url empty$
     'skip$
     { new.block "\dkbiburl{" url * "}" * output }
-  if$
-}
-
-FUNCTION {output.annote}
-{ annote empty$
-    'skip$
-    { new.block "\dkbibannote{" annote * "}" * output }
   if$
 }
 
@@ -720,7 +722,6 @@ FUNCTION {article}
   note output
   output.isbn.issn
   output.url
-  output.annote
   fin.entry
 }
 
@@ -755,7 +756,6 @@ FUNCTION {book}
   note output
   output.isbn.issn
   output.url
-  output.annote
   fin.entry
 }
 
@@ -772,7 +772,6 @@ FUNCTION {booklet}
   note output
   output.isbn.issn
   output.url
-  output.annote
   fin.entry
 }
 
@@ -809,7 +808,6 @@ FUNCTION {inbook}
   note output
   output.isbn.issn
   output.url
-  output.annote
   fin.entry
 }
 
@@ -838,7 +836,6 @@ FUNCTION {incollection}
   note output
   output.isbn.issn
   output.url
-  output.annote
   fin.entry
 }
 
@@ -875,7 +872,6 @@ FUNCTION {inproceedings}
   note output
   output.isbn.issn
   output.url
-  output.annote
   fin.entry
 }
 
@@ -914,7 +910,6 @@ FUNCTION {manual}
   note output
   output.isbn.issn
   output.url
-  output.annote
   fin.entry
 }
 
@@ -932,7 +927,6 @@ FUNCTION {mastersthesis}
   note output
   output.isbn.issn
   output.url
-  output.annote
   fin.entry
 }
 
@@ -948,7 +942,6 @@ FUNCTION {misc}
   note output
   output.isbn.issn
   output.url
-  output.annote
   fin.entry
   empty.misc.check
 }
@@ -967,7 +960,6 @@ FUNCTION {phdthesis}
   note output
   output.isbn.issn
   output.url
-  output.annote
   fin.entry
 }
 
@@ -1005,7 +997,6 @@ FUNCTION {proceedings}
   note output
   output.isbn.issn
   output.url
-  output.annote
   fin.entry
 }
 
@@ -1023,7 +1014,6 @@ FUNCTION {techreport}
   note output
   output.isbn.issn
   output.url
-  output.annote
   fin.entry
 }
 
@@ -1037,7 +1027,6 @@ FUNCTION {unpublished}
   format.date output
   output.isbn.issn
   output.url
-  output.annote
   fin.entry
 }
 
@@ -1442,12 +1431,12 @@ FUNCTION {begin.bib}
   "\@tfor\dkbib@reserved@a:=0123456789\do{%" write$ newline$
   "  \expandafter\sfcode\expandafter`\dkbib@reserved@a=1007}" write$ newline$
   "\providecommand{\dkbib@addperiod}{\ifnum\spacefactor=1007.\fi}" write$ newline$
-  "\providecommand{\dkbibedition}[1]{#1\dkbib@addperiod~udgave\@gobble}" write$ newline$
-  "\providecommand{\dkbibEdition}[1]{#1\dkbib@addperiod~udgave\@gobble}" write$ newline$
+  "\providecommand{\dkbibedition}[2]{#1\dkbib@addperiod~udgave}" write$ newline$
+  "\providecommand{\dkbibEdition}[2]{#1\dkbib@addperiod~udgave}" write$ newline$
   "\providecommand{\dkbibisbn}[1]{\unskip\@gobble}" write$ newline$
   "\providecommand{\dkbibissn}[1]{\unskip\@gobble}" write$ newline$
   "\providecommand{\dkbiburl}[1]{\unskip\@gobble}" write$ newline$
-  "\providecommand{\dkbibannote}[1]{\unskip\@gobble}" write$ newline$
+  "\providecommand{\dkbibannote}[2]{\unskip}" write$ newline$
   "\providecommand{\dkbibdash}{\hbox{-}\penalty\@m}" write$ newline$
   "\makeatother" write$ newline$
 }

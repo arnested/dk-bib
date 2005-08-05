@@ -1,5 +1,7 @@
 Dk-bib is a translation of the four standard BibTeX style files
-(abbrv, alpha, plain and unsrt) and apalike into danish.
+(abbrv, alpha, plain and unsrt) and apalike into Danish.
 
-The files have been extended with URL, ISBN, ISSN and printing fields
-which can be enabled through a LaTeX style file.
+The files have been extended with URL, ISBN, ISSN, annote and printing
+fields which can be enabled through a LaTeX style file.
+
+Danish sorting order files for BibTeX8 is also included.

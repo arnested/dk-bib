@@ -1,19 +1,19 @@
-% Copyright 2004, 2005 by Arne Jorgensen
+% Copyright 2004, 2005 Arne Jorgensen
 
-% This file is free software; you can redistribute it and/or modify
-% it under the terms of the GNU General Public License as published by
+% This file is free software; you can redistribute it and/or modify it
+% under the terms of the GNU General Public License as published by
 % the Free Software Foundation; either version 2 of the License, or
 % (at your option) any later version.
 
-% This program is distributed in the hope that it will be useful, but
+% This file is distributed in the hope that it will be useful, but
 % WITHOUT ANY WARRANTY; without even the implied warranty of
 % MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 % General Public License for more details.
 
 % You should have received a copy of the GNU General Public License
-% along with this program; if not, write to the Free Software
-% Foundation, Inc., 59 Temple Place - Suite 330, Boston,
-% MA 02111-1307, USA.
+% along with GNU Emacs; see the file COPYING.  If not, write to the
+% Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
+% Boston, MA 02110-1301, USA.
 
 \NeedsTeXFormat{LaTeX2e}[1995/12/01]
 
@@ -54,16 +54,6 @@
 \DeclareOptionX{printing}[true]{%
   \csname dkbib@printing#1\endcsname}
 
-\newif\ifdkbib@ordinalstoword
-\dkbib@ordinalstowordfalse
-\DeclareOptionX{ordinals2word}[true]{%
-  \csname dkbib@ordinalstoword#1\endcsname}
-
-\newcount\dkbib@ordinaldepth
-\dkbib@ordinaldepth20
-\DeclareOptionX{ordinaldepth}{%
-  \dkbib@ordinaldepth#1}
-
 \newif\ifdkbib@apalike
 \dkbib@apalikefalse
 \DeclareOptionX{apalike}[true]{%
@@ -74,21 +64,12 @@
 \DeclareOptionX{fixcitedash}[true]{%
   \csname dkbib@fixcitedash#1\endcsname}
 
-\ProcessOptionsX
-
-% Work around a wrong implementation  of \MakeUppercase (according to
-% Morten H\o gholm who also provided this implementation)
-\DeclareRobustCommand\dkbib@MakeUppercase[1]{%
-  \begingroup
-  \def\i{I}\def\j{J}%
-  \def\dkbib@reserved@a##1##2{\let##1##2\dkbib@reserved@a}%
-  \expandafter\dkbib@reserved@a\@uclclist\dkbib@reserved@b{\dkbib@reserved@b\@gobble}%
-  \protected@edef\dkbib@reserved@a{\endgroup\uppercase{#1}}%
-  \dkbib@reserved@a
-}
-\protected@edef\dkbib@MakeUppercase#1{\dkbib@MakeUppercase{#1}}
-
+\newcount\dkbib@maxordinaldepth
+\dkbib@maxordinaldepth0
 \newcommand*\dkbib@DeclareOrdinalWord[2]{
+  \ifnum#1>\dkbib@maxordinaldepth
+    \dkbib@maxordinaldepth#1
+  \fi
   \@namedef{dkbib@word#1}{#2}%
 }
 \dkbib@DeclareOrdinalWord{1}{f\o rste}
@@ -112,6 +93,35 @@
 \dkbib@DeclareOrdinalWord{19}{nittende}
 \dkbib@DeclareOrdinalWord{20}{tyvende}
 
+\newcount\dkbib@ordinaldepth
+\dkbib@ordinaldepth\dkbib@maxordinaldepth
+\DeclareOptionX{ordinaldepth}{%
+  \dkbib@ordinaldepth#1}
+
+\ifnum\dkbib@ordinaldepth>\dkbib@maxordinaldepth
+  \PackageWarningNoLine{dk-bib}{Ordinal depth set to
+    \the\dkbib@ordinaldepth, but maximum is \the\dkbib@maxordinaldepth}
+\fi
+
+\newif\ifdkbib@ordinalstoword
+\dkbib@ordinalstowordfalse
+\DeclareOptionX{ordinals2word}[true]{%
+  \csname dkbib@ordinalstoword#1\endcsname}
+
+\ProcessOptionsX
+
+% Work around a wrong implementation  of \MakeUppercase (according to
+% Morten H\o gholm who also provided this implementation)
+\DeclareRobustCommand\dkbib@MakeUppercase[1]{%
+  \begingroup
+  \def\i{I}\def\j{J}%
+  \def\dkbib@reserved@a##1##2{\let##1##2\dkbib@reserved@a}%
+  \expandafter\dkbib@reserved@a\@uclclist\dkbib@reserved@b{\dkbib@reserved@b\@gobble}%
+  \protected@edef\dkbib@reserved@a{\endgroup\uppercase{#1}}%
+  \dkbib@reserved@a
+}
+\protected@edef\dkbib@MakeUppercase#1{\dkbib@MakeUppercase{#1}}
+
 \AtBeginDocument{%
   %%% fixcitedash
   \@ifpackageloaded{cite}%
@@ -127,27 +137,31 @@
   %%% url
   \ifdkbib@url%
     \RequirePackage{url}%
-    \expandafter\ifx\csname dkbiburl\endcsname\relax\def\dkbiburl#1{URL \url{#1}}\fi%
+    \providecommand{\dkbiburl}[1]{URL \url{#1}}%
   \else%
-    \def\dkbiburl#1.{\relax}%
+    \def\dkbiburl#1{\unskip\@gobble}%
   \fi%
   %%% isbn
   \ifdkbib@isbn%
-    \expandafter\ifx\csname dkbibisbn\endcsname\relax\def\dkbibisbn#1{ISBN #1}\fi%
+    \providecommand{\dkbibisbn}[1]{ISBN #1}%
   \else%
-    \def\dkbibisbn#1.{\relax}%
+    \def\dkbibisbn#1{\unskip\@gobble}%
   \fi%
   %%% issn
   \ifdkbib@issn%
-    \expandafter\ifx\csname dkbibissn\endcsname\relax\def\dkbibissn#1{ISSN #1}\fi%
+    \providecommand{dkbibissn}[1]{ISSN #1}%
   \else%
-    \def\dkbibissn#1.{\relax}%
+    \def\dkbibissn#1{\unskip\@gobble}%
   \fi%
   %%% annote
   \ifdkbib@annote%
-    \expandafter\ifx\csname dkbibannote\endcsname\relax\def\dkbibannote#1{#1}\fi%
+    \providecommand{\dkbibannote}[2]{%
+      \begin{quotation}\noindent
+        \dkbib@MakeUppercase #2
+      \end{quotation}
+    }%
   \else%
-    \def\dkbibannote#1.{\relax}%
+    \def\dkbibannote#1#2{\unskip}%
   \fi%    
   %%% edition/printing
   \DeclareRobustCommand{\dkbibedition}[2]{%
