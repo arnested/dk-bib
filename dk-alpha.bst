@@ -13,7 +13,7 @@
 % Added field "isbn" and "issn". dag@ifi.uio.no, April 2001.
 % Translated into Danish by arne.jorgensen@tug.dk, June 2001.
 % Now called `dk-alpha'.
-% This is dk-bib, Version 0.3 ($Id$)
+% This is dk-bib, Version 0.4-pre1 ($Id$)
 
 ENTRY
   { address
