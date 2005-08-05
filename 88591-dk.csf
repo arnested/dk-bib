@@ -63,7 +63,7 @@
 
 %% Notice that Þ / þ (THORN / thorn) will be sorted as T / t and not
 %% as Th / th as it should be. You are probably better off be putting
-%% {{\TH}} / {{\th}} into your .bib file.
+%% \TH / \th into your .bib file.
 
 \order{
     0-9                      % 0-9

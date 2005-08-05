@@ -108,7 +108,7 @@
     R r                                              % R r
     S s                                              % S s
     T ^^9e t ^^be                                    % T THORN t thorn
-    U ^^9a ^^99 ^^9b u ^^ba ^^b9 ^bb                 % U \'{U} \`{U} \^{U} u \'{u} \`{u} \^{u}
+    U ^^9a ^^99 ^^9b u ^^ba ^^b9 ^^bb                % U \'{U} \`{U} \^{U} u \'{u} \`{u} \^{u}
     V v                                              % V v
     W w                                              % W w
     X x                                              % X x
