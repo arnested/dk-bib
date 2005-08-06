@@ -43,7 +43,7 @@
 \newcommand{\dkbibisbn}[1]{%
   \textsc{isbn} \href{http://isbn.nu/#1}{#1}}
 
-\newcommand{\BibTeX}{Bib\TeX}
+\newcommand{\BibTeX}{\textsc{Bib}\TeX}
 \bibliographystyle{dk-plain}
 
 \setkomafont{title}{\rmfamily}
@@ -57,8 +57,9 @@
 \hypersetup{pdfauthor={Arne J\o rgensen},
   pdftitle={Dk-bib Manual, version \dkbib@version\ (r\dkbibrevision)},
   pdfsubject={Danish variants of the standard BibTeX styles, version \dkbib@version},
-  pdfkeywords={dk-abbrv.bst dk-alpha.bst dk-apali.bst dk-plain.bst dk-unsrt.bst
-    dk-bib.sty 88591-dk.csf mac-dk.csf utf8-dk.csf BibTeX BibTeX8 LaTeX},
+  pdfkeywords={dk-abbrv.bst dk-alpha.bst dk-apali.bst dk-plain.bst
+    dk-unsrt.bst dk-bib.sty 88591-dk.csf cp850-dk.csf mac-dk.csf
+    utf8-dk.csf BibTeX BibTeX8 LaTeX},
   pdfstartview={FitH},
 }
 \makeatother
@@ -72,8 +73,8 @@
   Dk-bib is a translation of the four standard \BibTeX\ style files
   (abbrv, alpha, plain and unsrt) and apalike into Danish. The files
   have been extended with \textsc{url}, \textsc{isbn}, \textsc{issn},
-  annote and printing fields which can be enabled through a \LaTeX\
-  style file.
+  \texttt{annote} and \texttt{printing} fields which can be enabled
+  through a \LaTeX\ style file.
 
   Dk-bib also comes with a couple of Danish sorting order files for
   \BibTeX8.
@@ -86,9 +87,9 @@ Dk-bib er en oversættelse til dansk af de fire
 \BibTeX-standardstilarter (abbrv, alpha, plain, unsrt), samt
 apalike-stilarten.
 
-Stilarterne er udvidet med \textsc{url}-, \textsc{isbn}-, \textsc{issn}-,
-printing- (oplag) og annote-felter der kan slås til ved hjælp af den
-medfølgende \LaTeX-pakke.
+Stilarterne er udvidet med \textsc{url}-, \textsc{isbn}-,
+\textsc{issn}-, \texttt{printing}- (oplag) og \texttt{annote}-felter
+der kan slås til ved hjælp af den medfølgende \LaTeX-pakke.
 
 Sammen med dk-bib leveres også en række danske sorteringsdefinition
 til \BibTeX8.
@@ -215,11 +216,11 @@ grænse med
 \end{verbatim}
 
 \section{"`Annote"'-feltet til kommenteringer}
-Blandt \BibTeX s "`standardfelter"' finder vi \texttt{annote}-feltet
+Blandt \BibTeX's "`standardfelter"' finder vi \texttt{annote}-feltet
 der kan bruges til at fremstille en kommenteret litteraturliste.
 
 Ønsker du at få disse kommenteringer med i din litteraturliste bruges
-annote-tilvalget til \texttt{dk-bib}-pakken:
+\texttt{annote}-tilvalget til \texttt{dk-bib}-pakken:
 
 \begin{verbatim}
   \usepackage[annote]{dk-bib}
@@ -236,7 +237,7 @@ nøglen i \BibTeX-databasen og selve kommentaren, fx:
   \newcommand{\dkbibannote}[2]{\textbf{#1:} #2}
 \end{verbatim}
 
-\section{"`Specialeafhandling"' og "`Ph.-d.-afhandling"'}
+\section{"`Specialeafhandling"' og "`Ph.d.-afhandling"'}
 De danske \BibTeX-stilarter oversætter felterne \emph{Master's
   thesis} og \emph{PhD thesis} til henholdsvis
 \emph{Specialeafhandling} og \emph{Ph.d.-afhandling}.
@@ -315,7 +316,7 @@ af \verb|{}| er vigtigt):
 \end{verbatim}
 
 Ligeledes kan \BibTeX8 heller ikke sortere det islandske \TH\ korrekt
-under Th. Løsningen er her at skrive (igen er antallet af \verb|{}| er
+under Th. Løsningen er her at skrive (igen er antallet af \verb|{}|
 vigtigt):
 \begin{verbatim}
   author =       {\TH{}orvaldur Bjarnarson}
