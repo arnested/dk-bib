@@ -71,10 +71,10 @@
 \renewcommand{\abstractname}{Abstract in english}
 \begin{abstract}
   Dk-bib is a translation of the four standard \BibTeX\ style files
-  (abbrv, alpha, plain and unsrt) and apalike into Danish. The files
-  have been extended with \textsc{url}, \textsc{isbn}, \textsc{issn},
-  \texttt{annote} and \texttt{printing} fields which can be enabled
-  through a \LaTeX\ style file.
+  (abbrv, alpha, plain and unsrt) and the apalike style file into
+  Danish. The files have been extended with \textsc{url},
+  \textsc{isbn}, \textsc{issn}, \texttt{annote} and \texttt{printing}
+  fields which can be enabled through a \LaTeX\ style file.
 
   Dk-bib also comes with a couple of Danish sorting order files for
   \BibTeX8.
@@ -91,7 +91,7 @@ Stilarterne er udvidet med \textsc{url}-, \textsc{isbn}-,
 \textsc{issn}-, \texttt{printing}- (oplag) og \texttt{annote}-felter
 der kan slås til ved hjælp af den medfølgende \LaTeX-pakke.
 
-Sammen med dk-bib leveres også en række danske sorteringsdefinition
+Sammen med dk-bib leveres også en række danske sorteringsdefinitioner
 til \BibTeX8.
 
 Har du brug for en generel introduktion til \BibTeX\ kan kapitel~12
@@ -121,9 +121,9 @@ en smule og blot skrive
 
 Apalike.bst har brug for en anden udgave af \LaTeX's
 \verb|\cite|-kommando end den der som standard er defineret. Vi er
-derfor nød til at fortælle \LaTeX\ at vi bruger apalike.
+derfor nødt til at fortælle \LaTeX\ at vi bruger apalike.
 
-Det kan du gøre ved at tilføje følgende i preamblen
+Det kan du gøre ved at tilføje følgende i præamblen
 \begin{verbatim}
   \usepackage[apalike]{dk-bib}
 \end{verbatim}
@@ -133,13 +133,13 @@ Hvis \BibTeX-databasen indeholder \textsc{isbn}-, \textsc{issn}- eller
 \textsc{url}-felter og du ønsker at have disse med i din
 litteraturliste kan du gøre bruge at \LaTeX-pakken \texttt{dk-bib}.
 
-I preamblen af dit \LaTeX-dokument tilføjer du
+I præamblen af dit \LaTeX-dokument tilføjer du
 \begin{verbatim}
   \usepackage[isbn,issn,url]{dk-bib}
 \end{verbatim}
 
 Hvis du er utilfreds med måden disse felter bliver sat på er det
-muligt at definere din egen måde. Det gør du ved i preamblen at
+muligt at definere din egen måde. Det gør du ved i præamblen at
 definere en eller flere af kommandoerne \verb|\dkbibisbn|,
 \verb|\dkbibissn| og \verb|\dkbiburl|. De skal alle tage ét argument,
 hhv. \textsc{isbn}"-nummeret, \textsc{issn}"-nummeret og
@@ -215,22 +215,22 @@ grænse med
   \usepackage[ordinals2word,ordinaldepth=10]{dk-bib}
 \end{verbatim}
 
-\section{"`Annote"'-feltet til kommenteringer}
+\section{"`Annote"'-feltet til kommentarer}
 Blandt \BibTeX's "`standardfelter"' finder vi \texttt{annote}-feltet
 der kan bruges til at fremstille en kommenteret litteraturliste.
 
-Ønsker du at få disse kommenteringer med i din litteraturliste bruges
+Ønsker du at få disse kommentarer med i din litteraturliste bruges
 \texttt{annote}-tilvalget til \texttt{dk-bib}-pakken:
 
 \begin{verbatim}
   \usepackage[annote]{dk-bib}
 \end{verbatim}
 
-Kommenteringer bliver sat i en typografi der minder om dem der
-anvendes af \BibTeX-stilarterne annotate og annotation.
+Kommentarerne bliver sat i en typografi der minder om dem der anvendes
+af \BibTeX-stilarterne annotate og annotation.
 
-Du kan selv bestemme typografien ved at definere kommandoen
-\verb|\dkbibannote| i preamblen. Kommandoen skal tage to argumenter;
+Du kan selv bestemme en anden typografi ved at definere kommandoen
+\verb|\dkbibannote| i præamblen. Kommandoen skal tage to argumenter;
 nøglen i \BibTeX-databasen og selve kommentaren, fx:
 
 \begin{verbatim}
