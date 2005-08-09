@@ -277,7 +277,7 @@ bogstaver m.m. korrekt.
   \centering
   \begin{tabular}{ll}
 \toprule
-\emph{Sorteringsdefinition} & \emph{Inputencoding}\\
+\emph{Sorteringsdefinition} & \emph{Tilvalg til {\ttfamily inputenc}-pakken}\\
 \midrule
 88591-dk & latin1, latin9, ansinew, cp1252\\
 cp850-dk & cp850\\
@@ -285,14 +285,15 @@ mac-dk & applemac\\
 utf8-dk (eksperimentiel!) & utf8, utf8x\\
 \bottomrule
 \end{tabular}
-\caption{Sorteringsdefinitioner til \BibTeX8 og de tilsvarende inputencodings til \LaTeX's \texttt{inputenc}-pakke.}
+\caption{Sorteringsdefinitioner til \BibTeX8 og de tilsvarende tilvalg
+  til \LaTeX's \texttt{inputenc}-pakke.}
 \label{tab:csf-inputenc}
 \end{table}
 
 Sammen med denne pakke leveres derfor også et antal
 sorteringsdefinitioner tilpasset dansk sortering og flere tegnsæt. Se
-sammenhængen mellem inputencoding og sorteringsdefinition i
-tabel~\vref{tab:csf-inputenc}.
+sammenhængen mellem sorteringsdefinitioner og tilvalg til
+\texttt{inputenc}-pakken i tabel~\vref{tab:csf-inputenc}.
 
 Hvis din \BibTeX-database skal sorteres med \texttt{bibtex8} skal den
 skrives i samme tegnsæt som \LaTeX-dokumentet anvender og de danske
