@@ -49,7 +49,7 @@
 \setkomafont{title}{\rmfamily}
 \setkomafont{sectioning}{\rmfamily\bfseries}
 
-\title{dk-bib -- danish variants of the standard \BibTeX\
+\title{Dk-bib -- Danish variants of the standard \BibTeX\
   styles}
 \author{Arne Jørgensen\thanks{\href{mailto:arne.jorgensen@tug.dk}%
     {\texttt{arne.jorgensen@tug.dk}}}}
@@ -68,7 +68,7 @@
 \maketitle
 
 {\selectlanguage{english}{%
-\renewcommand{\abstractname}{Abstract in english}
+\renewcommand{\abstractname}{Abstract in English}
 \begin{abstract}
   Dk-bib is a translation of the four standard \BibTeX\ style files
   (abbrv, alpha, plain and unsrt) and the apalike style file into
@@ -109,7 +109,7 @@ i stedet for
 i \LaTeX-dokumentet.
 
 Dette bevirker at der bl.a. skrives \emph{og} mellem forfatternavne i
-stedet for det engelske \emph{and} og at der skrives fx
+stedet for det engelske \emph{and} og at der skrives for eksempel
 \emph{2.~udgave} i stedet for \emph{second edition}.
 
 \subsection{Apalike-stilarten}
@@ -142,11 +142,11 @@ Hvis du er utilfreds med måden disse felter bliver sat på er det
 muligt at definere din egen måde. Det gør du ved i præamblen at
 definere en eller flere af kommandoerne \verb|\dkbibisbn|,
 \verb|\dkbibissn| og \verb|\dkbiburl|. De skal alle tage ét argument,
-hhv. \textsc{isbn}"-nummeret, \textsc{issn}"-nummeret og
+henholdsvis \textsc{isbn}"-nummeret, \textsc{issn}"-nummeret og
 \textsc{url}'en.
 
 Følgende eksempel sætter ordet \textsc{isbn} med kapitæler og gør
-\textsc{isbn}-nummeret til et link (ved hjælp af hyperref-pakken)
+\textsc{isbn}-nummeret til et link (ved hjælp af hyperref-pakken):
 \begin{verbatim}
   \newcommand{\dkbibisbn}[1]{%
     \textsc{isbn} \href{http://isbn.nu/#1}{#1}}
@@ -155,7 +155,8 @@ Følgende eksempel sætter ordet \textsc{isbn} med kapitæler og gør
 \section{"`Printing"'-feltet til oplagsnumre}
 Ønsker du at medtage hvilket oplag af en publikation du referer eller
 henviser til kan du gøre brug af \verb|printing|-feltet. I
-\verb|.bib|-filen tilføjes fx nedenstående ved en publikation
+\verb|.bib|-filen tilføjes for eksempel nedenstående ved en
+publikation
 \begin{verbatim}
   printing =     {1},
 \end{verbatim}
@@ -177,7 +178,7 @@ dine \verb|.bib|-filer eller at du har glæde af oplagsnumre i deres.
 \section{Ordenstal i "`edition"'- og "`printing"'-felterne}
 Hvis du udveksler \BibTeX-databasefiler (\texttt{.bib}-filer) med
 andre \LaTeX-brugere vil du måske bemærke at der er tradition for at
-skrive udgavenummeret med ord og på engelsk, fx
+skrive udgavenummeret med ord og på engelsk, for eksempel
 
 \begin{verbatim}
   edition =      {second},
@@ -189,16 +190,16 @@ De danske \BibTeX-stilarter oversætter disse (op til
 \makeatother
 udgave) til \emph{2.~udgave}. På samme vis oversættes oplagsnummeret.
 
-Ønsker du at der i din danske litteraturliste i stedet for fx
-\emph{2.~udgave} står \emph{anden udgave} kan du bruge \LaTeX-pakken
-\texttt{dk-bib} således
+Ønsker du at der i din danske litteraturliste i stedet for for
+eksempel \emph{2.~udgave} står \emph{anden udgave} kan du bruge
+\LaTeX-pakken \texttt{dk-bib} således
 
 \begin{verbatim}
   \usepackage[ordinals2word]{dk-bib}
 \end{verbatim}
 
 Bemærk at udgave og oplag bliver omskrevet uanset om der i
-\BibTeX-databasen står \emph{second} som ovenfor eller fx
+\BibTeX-databasen står \emph{second} som ovenfor eller for eksempel
 
 \begin{verbatim}
   edition = 	 {2},
@@ -229,9 +230,9 @@ der kan bruges til at fremstille en kommenteret litteraturliste.
 Kommentarerne bliver sat i en typografi der minder om dem der anvendes
 af \BibTeX-stilarterne annotate og annotation.
 
-Du kan selv bestemme en anden typografi ved at definere kommandoen
+Du kan bestemme en anden typografi ved at definere kommandoen
 \verb|\dkbibannote| i præamblen. Kommandoen skal tage to argumenter;
-nøglen i \BibTeX-databasen og selve kommentaren, fx:
+nøglen i \BibTeX-databasen og selve kommentaren, for eksempel
 
 \begin{verbatim}
   \newcommand{\dkbibannote}[2]{\textbf{#1:} #2}
@@ -243,13 +244,13 @@ De danske \BibTeX-stilarter oversætter felterne \emph{Master's
 \emph{Specialeafhandling} og \emph{Ph.d.-afhandling}.
 
 Nogle uddannelsesinstitutioner bruger ikke begrebet
-\emph{specialeafhandling}, men fx \emph{hovedopgave} eller slet og ret
-\emph{speciale}. Andre kan få ret ophidsede diskussioner ud af
-stavemåden af ph.d.
+\emph{specialeafhandling}, men for eksempel \emph{hovedopgave} eller
+slet og ret \emph{speciale}. Andre kan få ret ophidsede diskussioner
+ud af stavemåden af ph.d.
 
 Måden man løser dette på er (helt uafhængigt af dk-bib) at indsætte
 et \texttt{type}-felt i \BibTeX-databasen ved den pågældende
-afhandling, fx
+afhandling, for eksempel
 \begin{verbatim}
   type = 	 {Hovedopgave},
 \end{verbatim}
@@ -286,7 +287,7 @@ utf8-dk (eksperimentiel!) & utf8, utf8x\\
 \bottomrule
 \end{tabular}
 \caption{Sorteringsdefinitioner til \BibTeX8 og de tilsvarende tilvalg
-  til \LaTeX's \texttt{inputenc}-pakke.}
+  til \texttt{inputenc}-pakken.}
 \label{tab:csf-inputenc}
 \end{table}
 
@@ -303,8 +304,8 @@ og ikke \verb|Svend \AA{}ge Madsen|.
 På grund af måden både \BibTeX\ og \BibTeX8 er konstrueret på er der
 dog et par problemer der kun besværligt lader sig løse.
 
-BibTeX8 kan ikke sortere dobbelt-A under Å, så har du fx en forfatter
-ved navn Ole Aagesen kan du sikre at han placeres korrekt i
+BibTeX8 kan ikke sortere dobbelt-A under Å, så har du for eksempel en
+forfatter ved navn Ole Aagesen kan du sikre at han placeres korrekt i
 bibliografien ved at indskrive følgende i starten af
 \texttt{bib}-filen:
 \begin{verbatim}
@@ -328,14 +329,14 @@ til \textsc{utf-8}-tegnsættet uden omhyggelig korrekturlæsning.
 Sorteringsdefinitionen benytter sig af en række ikke-dokumenterede
 effekter ved \texttt{bibtex8} og på grund af
 \textsc{utf-8}-tegnsættets og \BibTeX8's opbygning kan der forekomme
-en række sammenfald mellem sjældent og hyppigere brugte bogstaver (fx
-\L{} og \'{A}).
+en række sammenfald mellem sjældent og hyppigere brugte bogstaver (for
+eksempel \L{} og \'{A}).
 
 \section{Fejl, forbedringer og tak}
 Finder du fejl i oversættelserne, \BibTeX-stilarterne, \LaTeX-pakken
 eller har du blot forslag til forbedring er du hjertelig velkommen til
-at indsende dem \href{mailto:arne.jorgensen@tug.dk}{via e-post} eller
-på \url{https://arnested.dk/projects/dk-bib}.
+at sende dem \href{mailto:arne.jorgensen@tug.dk}{via e-post} eller på
+\url{https://arnested.dk/projects/dk-bib}.
 
 De danske \BibTeX-stilarter er oprindeligt oversat fra den norske
 oversættelse af de oprindelige stilarter. En stor tak til Dag Langmyhr
