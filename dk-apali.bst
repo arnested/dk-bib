@@ -37,7 +37,7 @@
 %			THIS `apalike' VERSION DOES NOT WORK WITH BIBTEX 0.98i.
 %   20-jan-2005 (arne)  Translated into Danish by arne.jorgensen@tug.dk.
 %   			Now called `dk-apali'.
-%   This is dk-bib, Version 0.4-pre1 ($Id$)
+%   This is dk-bib, Version 0.4 ($Id$)
 
 ENTRY
   { address
