@@ -108,9 +108,9 @@ i stedet for
 \end{verbatim}
 i \LaTeX-dokumentet.
 
-Dette bevirker at der bl.a. skrives \emph{og} mellem forfatternavne i
-stedet for det engelske \emph{and} og at der skrives for eksempel
-\emph{2.~udgave} i stedet for \emph{second edition}.
+Dette bevirker at der blandt andet skrives \emph{og} mellem
+forfatternavne i stedet for det engelske \emph{and} og at der skrives
+for eksempel \emph{2.~udgave} i stedet for \emph{second edition}.
 
 \subsection{Apalike-stilarten}
 Ønsker du at bruge oversættelsen af apalike-stilarten skal du forkorte
@@ -123,7 +123,7 @@ Apalike.bst har brug for en anden udgave af \LaTeX's
 \verb|\cite|-kommando end den der som standard er defineret. Vi er
 derfor nødt til at fortælle \LaTeX\ at vi bruger apalike.
 
-Det kan du gøre ved at tilføje følgende i præamblen
+Det kan du gøre ved at tilføje følgende i præamblen:
 \begin{verbatim}
   \usepackage[apalike]{dk-bib}
 \end{verbatim}
@@ -156,14 +156,14 @@ Følgende eksempel sætter ordet \textsc{isbn} med kapitæler og gør
 Ønsker du at medtage hvilket oplag af en publikation du referer eller
 henviser til kan du gøre brug af \verb|printing|-feltet. I
 \verb|.bib|-filen tilføjes for eksempel nedenstående ved en
-publikation
+publikation:
 \begin{verbatim}
   printing =     {1},
 \end{verbatim}
 
 Af hensyn til bagudkompatibiliteten medtages dette dog ikke i
 litteraturlisten før det aktiveres ved at tilføje \verb|printing| som
-tilvalg til \verb|dk-bib|-pakken
+tilvalg til \verb|dk-bib|-pakken:
 \begin{verbatim}
   \usepackage[printing]{dk-bib}
 \end{verbatim}
@@ -192,7 +192,7 @@ udgave) til \emph{2.~udgave}. På samme vis oversættes oplagsnummeret.
 
 Ønsker du at der i din danske litteraturliste i stedet for for
 eksempel \emph{2.~udgave} står \emph{anden udgave} kan du bruge
-\LaTeX-pakken \texttt{dk-bib} således
+\LaTeX-pakken \texttt{dk-bib} således:
 
 \begin{verbatim}
   \usepackage[ordinals2word]{dk-bib}
@@ -272,7 +272,7 @@ og a-z korrekt kan vi på dansk med fordel anvende \BibTeX8.
 udgangspunkt med en sorteringdefinition der er tilpasset skandinaviske
 sprog og \textsc{iso} 8859-1-tegnsættet. Denne sorteting tager dog kun
 højde for Æ, æ, Ø, ø, Å og å og sorterer derfor ikke accentuerede
-bogstaver m.m. korrekt.
+bogstaver med mere korrekt.
 
 \begin{table}
   \centering
@@ -298,8 +298,8 @@ sammenhængen mellem sorteringsdefinitioner og tilvalg til
 
 Hvis din \BibTeX-database skal sorteres med \texttt{bibtex8} skal den
 skrives i samme tegnsæt som \LaTeX-dokumentet anvender og de danske
-bogstaver skal skrives direkte -- dvs. skriv \verb|Svend Åge Madsen|
-og ikke \verb|Svend \AA{}ge Madsen|.
+bogstaver skal skrives direkte -- det vil sige skriv
+\verb|Svend Åge Madsen| og ikke \verb|Svend \AA{}ge Madsen|.
 
 På grund af måden både \BibTeX\ og \BibTeX8 er konstrueret på er der
 dog et par problemer der kun besværligt lader sig løse.
@@ -312,14 +312,14 @@ bibliografien ved at indskrive følgende i starten af
   @preamble{ "\providecommand{\Aa}[1]{Aa}" }
 \end{verbatim}
 og herefter skrive forfatteren ind i \texttt{bib}-filen som (antallet
-af \verb|{}| er vigtigt):
+af \verb|{}| er vigtigt)
 \begin{verbatim}
   author =       {Ole {\Aa{Å}}gesen}
 \end{verbatim}
 
 Ligeledes kan \BibTeX8 heller ikke sortere det islandske \TH\ korrekt
 under Th. Løsningen er her at skrive (igen er antallet af \verb|{}|
-vigtigt):
+vigtigt)
 \begin{verbatim}
   author =       {\TH{}orvaldur Bjarnarson}
 \end{verbatim}
