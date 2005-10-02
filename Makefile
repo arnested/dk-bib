@@ -18,7 +18,7 @@
 # along with this file; if not, write to the Free Software Foundation,
 # Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 
-.PHONY: all doc install-texmflocal install texlive clean
+.PHONY: all doc install-texmfhome install-texmflocal install texlive clean
 
 all: dk-bib.pdf
 
@@ -35,9 +35,9 @@ dk-bib.pdf: dk-bib.ltx litteratur.bib dk-plain.bst dk-bib.sty
 dk-bib.dvi: dk-bib.ltx litteratur.bib dk-plain.bst dk-bib.sty
 	LATEX=latex make doc
 
-dk-bib.zip: COPYRIGHT Makefile README dk-bib.ltx dk-bib.pdf\
+dk-bib.zip: README COPYRIGHT Makefile dk-bib.ltx dk-bib.pdf\
 	    dk-bib.sty litteratur.bib *.bst *.csf
-	zip $@ $^
+	zip -z $@ $^ < README
 
 install: dk-bib.pdf
 	test ${INSTALLDIR} # checking whether INSTALLDIR is set

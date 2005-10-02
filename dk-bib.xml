@@ -1,20 +1,20 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE entry SYSTEM 'catalogue.dtd'>
-<entry datestamp='2005-08-10 13:08:15' modifier='arne.jorgensen@tug.dk' id='dk-bib'>
+<entry datestamp='2005-10-02 16:22:02' modifier='arne.jorgensen@tug.dk' id='dk-bib'>
   <name>dk-bib</name>
   <caption>Danish variants of standard BibTeX styles.</caption>
-  <authorref id='auth:arne.jorgensen'/>
+  <authorref id='auth:joergensen-a'/>
   <home href='https://arnested.dk/projects/dk-bib'/>
   <license type='dfsg'/>
-  <version number='0.4'/>
+  <version number='0.5'/>
   <description>
     Dk-bib is a translation of the four standard BibTeX style files
     (abbrv, alpha, plain and unsrt) and the apalike style file into
     Danish.
-
+    <p/>
     The files have been extended with URL, ISBN, ISSN, annote and
     printing fields which can be enabled through a LaTeX style file.
-
+    <p/>
     Dk-bib also comes with a couple of Danish sorting order files for
     BibTeX8.
   </description>
