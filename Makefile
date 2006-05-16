@@ -36,7 +36,7 @@ dk-bib.dvi: dk-bib.ltx litteratur.bib dk-plain.bst dk-bib.sty
 	LATEX=latex make doc
 
 dk-bib.zip: README COPYRIGHT Makefile dk-bib.ltx dk-bib.pdf\
-	    dk-bib.sty litteratur.bib *.bst *.csf
+	    *.sty litteratur.bib *.bst *.csf
 	zip -z $@ $^ < README
 
 install: dk-bib.pdf
