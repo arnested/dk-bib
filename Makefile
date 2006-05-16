@@ -1,6 +1,6 @@
 ### Makefile --- for building dk-bib
 
-# Copyright (C) 2004, 2005 Arne Jorgensen
+# Copyright (C) 2004, 2005, 2006 Arne Jorgensen
 
 # Version: $Id$
 
@@ -46,6 +46,7 @@ install: dk-bib.pdf
 	install -m 0755 -d            ${INSTALLDIR}/bibtex/bst/dk-bib/
 	install -m 0755 -d            ${INSTALLDIR}/bibtex/csf/dk-bib/
 	install -m 0644 dk-bib.sty    ${INSTALLDIR}/tex/latex/dk-bib/
+	install -m 0644 dk-apali.sty  ${INSTALLDIR}/tex/latex/dk-bib/
 	install -m 0644 dk-bib.pdf    ${INSTALLDIR}/doc/latex/dk-bib/
 	install -m 0644 *.bst         ${INSTALLDIR}/bibtex/bst/dk-bib/
 	install -m 0644 *.csf         ${INSTALLDIR}/bibtex/csf/dk-bib/
