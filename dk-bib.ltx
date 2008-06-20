@@ -1,4 +1,4 @@
-% Copyright (C) 2004, 2005, 2006, 2007 Arne Jørgensen
+% Copyright (C) 2004, 2005, 2006, 2007, 2008 Arne Jørgensen
 
 % This file is free software; you can redistribute it and/or modify it
 % under the terms of the GNU General Public License as published by
@@ -69,9 +69,9 @@
 \renewcommand{\abstractname}{Abstract in English}
 \begin{abstract}
   Dk-bib is a translation of the four standard \BibTeX\ style files
-  (abbrv, alpha, plain and unsrt) and the apalike style file into
+  (abbrv, alpha, plain, and unsrt) and the apalike style file into
   Danish. The files have been extended with \textsc{url},
-  \textsc{isbn}, \textsc{issn}, \texttt{annote} and \texttt{printing}
+  \textsc{isbn}, \textsc{issn}, \texttt{annote}, and \texttt{printing}
   fields which can be enabled through a \LaTeX\ style file.
 
   Dk-bib also comes with a couple of Danish sorting order files for
@@ -143,8 +143,8 @@ definere en eller flere af kommandoerne \verb|\dkbibisbn|,
 henholdsvis \textsc{isbn}"-nummeret, \textsc{issn}"-nummeret og
 \textsc{url}'en.
 
-Følgende eksempel sætter ordet \textsc{isbn} med kapitæler og gør
-\textsc{isbn}-nummeret til et link (ved hjælp af hyperref-pakken):
+Følgende eksempel sætter ordet "`\textsc{isbn}"' med kapitæler og gør
+\textsc{isbn}-nummeret til et link (ved hjælp af \texttt{hyperref}-pakken):
 \begin{verbatim}
   \newcommand{\dkbibisbn}[1]{%
     \textsc{isbn} \href{http://isbn.nu/#1}{#1}}
@@ -294,7 +294,7 @@ sorteringsdefinitioner tilpasset dansk sortering og flere tegnsæt. Se
 sammenhængen mellem sorteringsdefinitioner og tilvalg til
 \texttt{inputenc}-pakken i tabel~\vref{tab:csf-inputenc}.
 
-Hvis din \BibTeX-database skal sorteres med \texttt{bibtex8} skal den
+Hvis din \BibTeX-database skal sorteres med \BibTeX8 skal den
 skrives i samme tegnsæt som \LaTeX-dokumentet anvender og de danske
 bogstaver skal skrives direkte -- det vil sige skriv
 \verb|Svend Åge Madsen| og ikke \verb|Svend \AA{}ge Madsen|.
@@ -302,10 +302,10 @@ bogstaver skal skrives direkte -- det vil sige skriv
 På grund af måden både \BibTeX\ og \BibTeX8 er konstrueret på er der
 dog et par problemer der kun besværligt lader sig løse.
 
-BibTeX8 kan ikke sortere dobbelt-A under Å, så har du for eksempel en
+\BibTeX8 kan ikke sortere dobbelt-A under Å, så har du for eksempel en
 forfatter ved navn Ole Aagesen kan du sikre at han placeres korrekt i
 bibliografien ved at indskrive følgende i starten af
-\texttt{bib}-filen:
+\verb|.bib|-filen:
 \begin{verbatim}
   @preamble{ "\providecommand{\Aa}[1]{Aa}" }
 \end{verbatim}
@@ -325,7 +325,7 @@ vigtigt)
 Slutteligt vil jeg \emph{advare} mod at bruge sorteringsdefinitionen
 til \textsc{utf-8}-tegnsættet uden omhyggelig korrekturlæsning.
 Sorteringsdefinitionen benytter sig af en række ikke"-dokumenterede
-effekter ved \texttt{bibtex8} og på grund af
+effekter ved \BibTeX8 og på grund af
 \textsc{utf-8}-tegnsættets og \BibTeX8's opbygning kan der forekomme
 en række sammenfald mellem sjældent og hyppigere brugte bogstaver (for
 eksempel \L{} og \'{A}).
