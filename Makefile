@@ -1,8 +1,6 @@
 ### Makefile --- for building dk-bib
 
-# Copyright (C) 2004, 2005, 2006 Arne Jorgensen
-
-# Version: $Id$
+# Copyright (C) 2004, 2005, 2006, 2011 Arne Jorgensen
 
 # This file is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by

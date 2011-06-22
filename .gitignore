@@ -1,0 +1,11 @@
+dk-bib.zip
+dk-bib.pdf
+dk-bib.dvi
+dk-bib.aux
+dk-bib.bbl
+dk-bib.blg
+dk-bib.out
+dk-bib.log
+.auctex-auto
+.auctex-auto/*
+texput.log

@@ -1,4 +1,4 @@
-% Copyright (C) 2004, 2005, 2006, 2007, 2008 Arne Jørgensen
+% Copyright (C) 2004, 2005, 2006, 2007, 2008, 2011 Arne Jørgensen
 
 % This file is free software; you can redistribute it and/or modify it
 % under the terms of the GNU General Public License as published by
@@ -25,17 +25,15 @@
 \usepackage[protrusion=true,expansion=true]{microtype}
 \usepackage{hyperref}
 
-% subversion date and revision
-\def\dkbib@svn $#1 #2 #3 #4-#5-#6 #7 #8 ${%
-  \def\dkbibrevision{#3}
-  \year  =#4
-  \month =#5
-  \day   =#6
-}
-\dkbib@svn $Id$
-
 % this is how the LaTeX package can be called
 \usepackage[isbn=true,ordinals2word=true]{dk-bib}
+
+% date stuff
+\makeatletter
+\year=\dkbib@date@year
+\month=\dkbib@date@month
+\day=\dkbib@date@day
+\makeatother
 
 % if you want your own way of typesetting URL's, ISBN's, and ISSN's do
 \newcommand{\dkbiburl}[1]{\textsc{url} \url{#1}}
@@ -53,7 +51,7 @@
     {\texttt{arne.jorgensen@tug.dk}}}}
 \makeatletter
 \hypersetup{pdfauthor={Arne J\o rgensen},
-  pdftitle={Dk-bib Manual, version \dkbib@version\ (r\dkbibrevision)},
+  pdftitle={Dk-bib Manual, version \dkbib@version},
   pdfsubject={Danish variants of the standard BibTeX styles, version \dkbib@version},
   pdfkeywords={dk-abbrv.bst dk-alpha.bst dk-apali.bst dk-plain.bst
     dk-unsrt.bst dk-bib.sty 88591-dk.csf cp850-dk.csf mac-dk.csf

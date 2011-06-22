@@ -1,4 +1,4 @@
-% Copyright (C) 2004, 2005, 2006 Arne Jorgensen
+% Copyright (C) 2004, 2005, 2006, 2011 Arne Jorgensen
 
 % This file is free software; you can redistribute it and/or modify it
 % under the terms of the GNU General Public License as published by
@@ -16,15 +16,13 @@
 
 \NeedsTeXFormat{LaTeX2e}[1995/12/01]
 
-% subversion date and revision
-\def\dkbib@svn $#1 #2 #3 #4-#5-#6 #7 #8 ${%
-  \def\dkbib@sty@revision{#3}
-  \def\dkbib@sty@date{#4/#5/#6}
-}
-\dkbib@svn $Id$
 \def\dkbib@version{0.6}
+\def\dkbib@date@year{2011}
+\def\dkbib@date@month{06}
+\def\dkbib@date@day{22}
+\def\dkbib@date{\dkbib@date@year/\dkbib@date@month/\dkbib@date@day}
 
-\ProvidesPackage{dk-bib}[\dkbib@sty@date\space v\dkbib@version\space(r\dkbib@sty@revision) Danish variants of the standard BibTeX styles]
+\ProvidesPackage{dk-bib}[\dkbib@date\space v\dkbib@version\space Danish variants of the standard BibTeX styles]
 
 \RequirePackage{xkeyval}
 

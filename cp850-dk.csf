@@ -1,9 +1,8 @@
 %%% cp850-dk.csf --- Danish CP 850 sorting order file for bibtex8
 
-%% Copyright (C) 2005 Arne Jorgensen
+%% Copyright (C) 2005, 2011 Arne Jorgensen
 
 %% Author: Arne Jorgensen <arne.jorgensen@tug.dk>
-%% Version: $Id$
 
 %% This file is free software; you can redistribute it and/or modify
 %% it under the terms of the GNU General Public License as published
