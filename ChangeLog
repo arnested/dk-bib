@@ -1,0 +1,123 @@
+
+n.n.n / 2011-08-03
+==================
+
+  * Fix usage of SVN keyword expansion.
+  * Corrections from Mads Sørensen (he mailed them back in december...)
+  * Moved homepage of dk-bib to www.tug.dk
+  * Yet another spelling error from Mads. Thank you, Mads!
+
+0.6 / 2006-05-21
+==================
+
+  * Release 0.6
+  * The default language if babel is not loaded should be enaglish, not danish (for consistency with other captions).
+  * Fixed spelling error and fix order of people I thank.
+  * Add dk-apali.sty to dk-bib.zip.
+  * Add keyword expansion.
+  * Added dk-apali.sty -- a variant of apalike.sty that translates "References". Use it in dk-bib.sty instead of apalike.sty.
+  * Translated title of the document into Danish since the rest of the document is Danish anyway.
+  * Remove reference to Emacs in copyright notices.
+  * Corrected FSF address in copyright notice.
+
+0.5 / 2005-10-02
+==================
+
+  * Bump version number to 0.5
+  * Fix a bug when enabling ISSN numbers (a missing back slash).
+  * Catalogue entry adjusted.
+  * Also thank Mads Sørensen (diablo@imf.au.dk)
+  * Put README in zip-archices as description (in Makefile)
+ * Even more doc fixes from Mads!
+  * One more documentation improvement from Mads Sørensen.
+  * More comments from Mads Sørensen. And fxied an overfull \hbox.
+
+0.4 / 2005-08-10
+==================
+
+  * Release v0.4 of dk-bib.
+  * Fixed description in the README file and the catalogue description.
+  * Better use of the terminology inputenc/inputencoding in Danish. Suggested by Henrik Grove.
+  * Fixed comments from Henrik Grove.
+  * Fixed comments from Mads S\o rensen (diablo@imf.au.dk).
+  * Pre-release 0.4pre1!
+  * Redone annote-field to be more like the annotate and annotation packages
+  * Cleanup some internals in the .sty file
+  * Fixed copyright messages (ie FSF address)
+  * Improved documentation and added new features (annote and .csf)
+  * Fixed typos and added a sorting order for codepage 850.
+  * Adjusted and updated the sorting order files according to Danish Standard DS 377 (as far as possible).
+  * Use an en-dash for pages intervals.
+  * Updated copyright notices and documentation details.
+  * \unskip in default definitions in preamble of .bbl
+  * Fixed vary rare problem (missing publisher and edition, but present printing). Cleaned some internal code.
+  * Add support for the `annote' field (aka the Brian Elmegaard-feature).
+  * Fix \citedash to apply with danish typography (according to Retskrivningsordbogen) when the cite-package is loaded.
+  * Fix last commit. Also add keyword tag.
+  * Added mac-dk.csf to the Makefile.
+  * Added a danish sorting order file for the mac-roman encoding.
+  * Install the .csf files in a dk-bib subdirectory.
+  * Added installation of 88591-dk.csf to the Makefile.
+  * Danish bibtex8 sorting order file for ISO-8859-1 (latin-1).
+  * Escaped all high characters so it is safe to transfer the file over the net. MIME-type reverted to text/plain.
+  * Set MIME-type to application/octet-stream.
+  * Redone sorting order. This is probably the best compromise we can get.
+  * set MIME-type to text/plain.
+  * Added char descriptions to the sorting order.
+  * Fix end-of-line style of the file. I guess native is the way to go.
+  * We have to leave out the first byte of danish two-byte characters instead putting it first in the sorting order. Otherwise all two-byte characters would be sorted before other characters.
+  * Very experimental try at supporting danish sorting file (.csf) for UTF-8 and bibtex8. Although it should not be possible...
+  * Merged with the current one in the catalogue.
+
+0.3 / 2005-01-20
+==================
+
+  * Prepare for release 0.3.
+  * Set keyword-expansion on dk-apali.bst.
+  * Described apalike in the documentation.
+  * Added a danish translation of apalike.bst.
+  * Remember to end \ifx with \fi ...
+  * BibTeX won't add.period$ to \dkbibprinting{2.} because it thinks it ends with a period already.
+  * Fixed a bug in the edition field.
+  * Reimplementation of \dkbibedition, \dkbibEdition, \dkbibprinting and \dkbibPrinting based on valuable feedback from Morten Høgholm.
+  * Work around for wrong implementation of \MakeUppercase from Morten Høgholm.
+  * Thank Morten in the documentation.
+  * Minor improvements in the documentation and Makefile
+  * Smal doc improvements.
+  * Subversion ignore properties set.
+  * Wrong \def for SVN keyword in [35]. It got expanded itself by SVN ...
+  * The new `printing' field has been explained in the manual.
+  * Change old LaTeX2.09 \em commands to LaTeX2e \emph to avoid problems with Memoir as noticed by Martin Heller in <http://article.gmane.org/gmane.comp.tex.danish/7963>.
+  * Enable keywords expansion
+  * Added an entry field 'printing' for printing (danish: oplag). Enable it with the printing option to dk-bib.sty. Documentation still misses.
+  * Makefile improvements (now more portable too).
+  * Corrected a couple of spelling errors.
+  * Minor doc improvements.
+  * Don't use package `ucs.sty'. Switch from `pdfcprot.sty' to `microtype.sty'. Suggestions from Thomas Esser.
+  * Typograhic corrections to the documentation. Now uses KOMA-script and wiped out overfull hbox.
+  * Updated license information, date, version, TeX Catalogue entry, etc. (prepare for release).
+  * Users manual.
+  * Disable ISBN and ISSN by default.
+  * Make it easier to define another style of URL, ISBN and/or ISSN.
+  * Using xkeyval to process the keyval options we can eliminate the code from hyperref (see changeset [18]).
+  * Change default with dk-bib.sty to NOT display ISBN and ISSN (because the original BibTeX-styles don't do that).
+  * Can now translate ordinals in to words.
+  * An extra dot destroyed stuff ....
+  * Better check \dkbibEdition when defining \dkbibEdition ...
+  * Changed BST-files to support translation of edition numbers to words (will require the .sty-file).
+  * Make it possible to enable/disable ISBN/ISSN through dk-bib.sty. Default to leave it on to be backward compatible with the first version of dk-bib (not the original bibtex styles).
+  * Disable URL by default. To enable it use the package dk-bib.sty.
+  * Simpler approach to edition translation and some bugfixes in.
+  * Understand "first", "second", ... in the edition field.
+  * Added support for url field.
+  * Use an abbreviation point (forkortelsespunktum) in shortened month names (except may/maj).
+  * The abbreviation "nr" (number) in format.number.series was without a period.
+  * Typesetting of edition number has been changed.
+  * Corrected spelling on first line. Fixes #1.
+  * XML-file for The TeX Catalogue.
+  * BibTeX styles files as publish to DK-TUG
+
+0.2 / 2001-06-03
+==================
+
+  * BibTeX styles files as publish to DK-TUG mailinglist
