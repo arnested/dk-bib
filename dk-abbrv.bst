@@ -11,7 +11,7 @@
 % "Translated" into Norwegian by dag@ifi.uio.no, July 1997.
 % Now called `norabbrv'.
 % Added field "isbn" and "issn". dag@ifi.uio.no, April 2001.
-% Translated into Danish by arne.jorgensen@tug.dk, June 2001.
+% Translated into Danish by arne@arnested.dk, June 2001.
 % Now called `dk-abbrv'.
 % This is dk-bib, Version 0.6
 

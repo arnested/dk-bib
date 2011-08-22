@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE entry SYSTEM 'catalogue.dtd'>
-<entry datestamp='2006-05-21 21:15:17' modifier='arne.jorgensen@tug.dk' id='dk-bib'>
+<entry datestamp='2006-05-21 21:15:17' modifier='arne@arnested.dk' id='dk-bib'>
   <name>dk-bib</name>
   <caption>Danish variants of standard BibTeX styles.</caption>
   <authorref id='auth:joergensen-a'/>

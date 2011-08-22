@@ -35,7 +35,7 @@
 %   24-jan-88	(OP)	Updated for BibTeX version 0.99a, from alpha.bst 0.99a;
 %			apalike now sorts by author, then year, then title;
 %			THIS `apalike' VERSION DOES NOT WORK WITH BIBTEX 0.98i.
-%   20-jan-2005 (arne)  Translated into Danish by arne.jorgensen@tug.dk.
+%   20-jan-2005 (arne)  Translated into Danish by arne@arnested.dk.
 %   			Now called `dk-apali'.
 %   This is dk-bib, Version 0.6
 
